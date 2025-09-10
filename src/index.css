@@ -38,7 +38,7 @@ body {
 
 .dark {
     --bg: #212121;
-    --text: #ffffff;
+    --text: #e1e1e1;
     --myGreen: #1d2b2a;
     --myBlue: #162c3b;
     --navbar: #414a4b ;
@@ -56,6 +56,12 @@ body {
     --textColor: #ffffff;
 }
 
-p ,span , li , i , a{
+p ,span , li , i ,h3{
     color: var(--text);
 } 
+
+
+
+.white-force {
+  color: white !important;
+}

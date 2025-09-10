@@ -67,15 +67,14 @@ function Header() {
                     <div className="Logo_of_Site w-50 py-2">
                         <img src={Logo} alt="logo picture" />
                     </div>
-                    <div className="Search_box flex w-full max-w-lg mx-auto border rounded-full overflow-hidden">
+                    <div className="Search_box flex w-full max-w-lg mx-auto border rounded-full overflow-hidden border-[var(--text)]">
                         <button className="px-4 py-2 bg-white flex items-center gap-1">
                             All categories ▼
                         </button>
-
                         <input
                             type="text"
                             placeholder="Search for products"
-                            className="flex-1 px-5 py-3 outline-none ]"
+                            className="flex-1 px-5 py-3 outline-none text-[var(--text)]"
                         />
                         <button className="px-4 py-2 bg-gray-600 text-white">
                             <i className="fas fa-light fa-magnifying-glass"></i>
