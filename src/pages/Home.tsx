@@ -59,9 +59,42 @@ function Home() {
 
                 </div>
 
-                <div className="2nd_section">
-                    
+                <div className="2nd_section flex flex-row justify-between">
+                    <div className="box1 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
+                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="textBox">
+                            <p className="font-bold m-1">Free delivery</p>
+                            <p className="text-sm">Free Shipping for orders over $20</p>
+                        </div>
+                    </div>
+                    <div className="box2 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
+                    <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="textBox">
+                            <p className="font-bold m-1">Support 24/7</p>
+                            <p className="text-sm">24 hours a day, 7 days a week</p>
+                        </div></div>
+                    <div className="box3 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
+                    <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="textBox">
+                            <p className="font-bold m-1">Payment</p>
+                            <p className="text-sm">Pay with Multiple Credit Cards</p>
+                        </div></div>
+                    <div className="box4 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
+                    <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="textBox">
+                            <p className="font-bold m-1">Reliable</p>
+                            <p className="text-sm">Trusted by 2000+ major brands</p>
+                        </div></div>
+                    <div className="box5 w-1/5 ms-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
+                    <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="textBox">
+                            <p className="font-bold m-1">Guarantee</p>
+                            <p className="text-sm">Within 30 days for an exchange</p>
+                        </div></div>
                 </div>
+
+
+                
             </Container>
 
 
