@@ -65,3 +65,6 @@ p ,span , li , i ,h3{
 .white-force {
   color: white !important;
 }
+.yello-force {
+  color: rgb(255, 231, 78) !important;
+}
