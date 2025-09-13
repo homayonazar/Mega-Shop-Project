@@ -9,7 +9,7 @@ import img2Right from "../assets/images/img2Right.png"
 import Product from "../components/Product"
 import { useEffect, useState } from "react"
 import { getProducts } from "../components/Services/Api"
-
+import tvPic from "../assets/images/tv.webp"
 
 
 
@@ -125,6 +125,26 @@ function Home() {
 
                     </div>
                 </div>
+            </Container>
+
+            <div className="FullWidth_add w-full h-130 mt-15 bg-gradient-to-r from-[rgba(15,38,209,1)] to-[rgba(207,31,8,1)] flex flex-row ">
+                <div className="tv w-1/2 h-auto">
+                    <div className="img  ms-20 mt-10">
+                        <img src={tvPic} className="w-2/3" alt="tv_picture" />
+                    </div>
+                </div>
+                <div className="tvText w-1/2 h-auto flex flex-col justify-center">
+                    <h2 className="text-white text-6xl font-poppins">
+                        GameConsole Destiny <br /> Special Edition
+                    </h2>                </div>
+            </div>
+
+            <Container>
+                Test Text
+
+
+
+
             </Container>
 
 
