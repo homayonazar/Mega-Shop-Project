@@ -37,7 +37,7 @@ body {
 }
 
 .dark {
-    --bg: #212121;
+    --bg: #1e1f20;
     --text: #e1e1e1;
     --myGreen: #1d2b2a;
     --myBlue: #162c3b;
@@ -64,4 +64,10 @@ p ,span , li , i ,h3{
 
 .white-force {
   color: white !important;
+}
+.yello-force {
+  color: rgb(255, 231, 78) !important;
+}
+.red-force {
+  color: rgb(255, 59, 59) !important;
 }
