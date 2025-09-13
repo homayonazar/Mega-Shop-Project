@@ -6,8 +6,27 @@ import imageMiddle from "../assets/images/middleImage.jpg"
 import middleimagePhoto from "../assets/images/img-prd9.webp"
 import img1Right from "../assets/images/img1Right.png"
 import img2Right from "../assets/images/img2Right.png"
+import Product from "../components/Product"
+import { useEffect, useState } from "react"
+import { getProducts } from "../components/Services/Api"
+
+
+
 
 function Home() {
+
+    // const [products, setProducts] = useState<IProduct[]>([])
+
+    // useEffect(() => {
+    //     getProducts().then((result) => {
+    //         setProducts(result.products);
+    //     });
+    // }, []);
+
+
+
+
+
     return (
         <div className="bg-[var(--bg)] w-full">
             <Header />
@@ -68,25 +87,25 @@ function Home() {
                         </div>
                     </div>
                     <div className="box2 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                    <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
                         <div className="textBox">
                             <p className="font-bold m-1">Support 24/7</p>
                             <p className="text-sm">24 hours a day, 7 days a week</p>
                         </div></div>
                     <div className="box3 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                    <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
                         <div className="textBox">
                             <p className="font-bold m-1">Payment</p>
                             <p className="text-sm">Pay with Multiple Credit Cards</p>
                         </div></div>
                     <div className="box4 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                    <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
                         <div className="textBox">
                             <p className="font-bold m-1">Reliable</p>
                             <p className="text-sm">Trusted by 2000+ major brands</p>
                         </div></div>
                     <div className="box5 w-1/5 ms-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                    <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
                         <div className="textBox">
                             <p className="font-bold m-1">Guarantee</p>
                             <p className="text-sm">Within 30 days for an exchange</p>
@@ -94,7 +113,18 @@ function Home() {
                 </div>
 
 
-                
+                <div className="DealOfDay mt-10">
+                    <div className="textofDeal p-4 border-b-1 border-gray-200">
+                        <i className="fa-solid fa-fire red-force text-3xl"></i> <p className="red-force inline text-2xl ">Deal Of The Day </p>
+                    </div>
+                    <div className="products_box w-full flex flex-row ">
+                        <Product />
+                        <Product />
+                        <Product />
+                        <Product />
+
+                    </div>
+                </div>
             </Container>
 
 

@@ -29,41 +29,43 @@ function Header() {
 
     return (
         <div className="shadow bg-[var(--bg)]">
-            <div className="Upper_section_of_header w-full h-7 flex justify-between border-b-1 border-gray-200">                <div className="Left_side ms-3">
-                <i className="fas fa-light fa-phone"></i>
-                <span className="text-gray-700 m-1"> Call us : +90 (531) 123 4567</span>
-            </div>
-                <div className="flex items-center gap-6 text-gray-600">
+            <div className="upper_section py-2">
+                <div className="Upper_section_of_header w-full h-7 flex justify-between border-b-1 border-gray-200">                <div className="Left_side ms-3">
+                    <i className="fas fa-light fa-phone"></i>
+                    <span className="text-gray-700 m-1 py-10"> Call us : +90 (531) 123 4567</span>
+                </div>
+                    <div className="flex items-center gap-6 text-gray-600">
 
-                    <button
-                        className="Day|Night_button cursor-pointer"
-                        type="button" onClick={toggleDarkMode}
-                        title={darkMode ? "Switch to light" : "Switch to dark"}>
+                        <button
+                            className="Day|Night_button cursor-pointer"
+                            type="button" onClick={toggleDarkMode}
+                            title={darkMode ? "Switch to light" : "Switch to dark"}>
 
-                        {darkMode ? (
-                            <p> <i className="far fa-regular fa-sun me-1"></i>Day</p>
-                        ) : (
-                            <p> <i className="far fa-light fa-moon me-1"></i>Night</p>
-                        )}
-                    </button>
+                            {darkMode ? (
+                                <p> <i className="far fa-regular fa-sun me-1"></i>Day</p>
+                            ) : (
+                                <p> <i className="far fa-light fa-moon me-1"></i>Night</p>
+                            )}
+                        </button>
 
 
 
-                    <button className="flex items-center gap-2 cursor-pointer">
-                        <i className="fas fa-light fa-language "></i>
-                        <span className="">Language:</span>
-                        <span className="font-semibold">English</span>
-                    </button>
+                        <button className="flex items-center gap-2 cursor-pointer">
+                            <i className="fas fa-light fa-language "></i>
+                            <span className="">Language:</span>
+                            <span className="font-semibold">English</span>
+                        </button>
 
-                    <button className="flex items-center gap-2 text-gray-700 cursor-pointer ">
-                        <i className="far fa-user text-lg"></i>
-                        <span className="font-medium me-3">Sign-in</span>
-                    </button>
+                        <button className="flex items-center gap-2 text-gray-700 cursor-pointer ">
+                            <i className="far fa-user text-lg"></i>
+                            <span className="font-medium me-3">Sign-in</span>
+                        </button>
 
+                    </div>
                 </div>
             </div>
             <Container>
-                <div className="Header_section w-full h-auto flex justify-between items-center ">
+                <div className="Header_section w-full h-auto flex justify-between items-center">
                     <div className="Logo_of_Site w-50 py-2">
                         <img src={Logo} alt="logo picture" />
                     </div>
