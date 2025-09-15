@@ -1,20 +1,20 @@
-import img1 from "../assets/images/o_1301-488x488.webp"
+import type { IProduct } from "./types/Server";
 
+type ProductProps = IProduct
 
-
-function Product() {
+export default function Product({ title, price, imageUrl, /*productDetail*/ }: ProductProps) {
     return (
-        <div className="PdctBox w-1/4 h-auto bg-white shadow-lg m-6 rounded-2xl flex flex-col items-center p-4 hover:bg-[var(--myBlue)] transition-transform duration-300 relative  ">
-            <div className="discount absolute rounded-full bg-red-600 text-white p-2 top-0 left-0 m-5 ">75%</div>
-            <div className="img w-full flex flex-col items-center text-center">
-                <img src={img1} alt="image-1" className="rounded-xl w-40 h-40 object-cover mb-4" />
-                <h2 className="text-lg font-semibold mb-2">Name of Product</h2>
-                <p className="text-gray-700">Price is : <span className="text-red-600 font-bold">56$</span></p>
-                <button className=" w-1/2 outline-0 bg-red-400 text-white rounded-md p-1 mt-3">Add To Cart</button>
+        <div className="bg-[var(--bg)] rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 m-5 overflow-hidden">
+            <img className="w-full h-auto object-cover rounded-t-2xl" src={imageUrl} alt={title} />
+            <div className="flex justify-between items-center p-4">
+                <h2 className="font-poppins font-semibold text-lg">{title}</h2>
+                <p className="red-force font-bold text-lg"> {price} $  </p>
             </div>
-
+            {/* <p className="px-4 pb-4 text-gray-600 text-sm">{productDetail}</p> */}
+            <button className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold py-2 
+                rounded-b-2xl hover:from-blue-600 hover:to-indigo-600 transition-colors duration-300">
+                Add to Cart
+            </button>
         </div>
     )
 }
-
-export default Product
