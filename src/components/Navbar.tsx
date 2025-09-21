@@ -24,7 +24,7 @@ function Navbar() {
                             </li>
                         </ul>
                         <div className="cart">
-                            <Link to="/"><i className="fas fa-light fa-cart-shopping me-1 text-lg"></i><p className="inline px-1">Cart</p></Link>
+                            <Link to="/cart"><i className="fas fa-light fa-cart-shopping me-1 text-lg"></i><p className="inline px-1">Cart</p></Link>
                             <Link to="/"><i className="fas fa-light fa-heart ms-10 text-lg"></i><p className="inline px-1">Favorite</p></Link>
 
                         </div>

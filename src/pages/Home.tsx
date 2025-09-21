@@ -1,6 +1,4 @@
 import Container from "../components/Container"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
 import { Link } from "react-router-dom"
 import imageMiddle from "../assets/images/middleImage.jpg"
 import middleimagePhoto from "../assets/images/img-prd9.webp"
@@ -12,9 +10,6 @@ import { getProducts } from "../components/Services/Api"
 import tvPic from "../assets/images/tv.webp"
 import type { IProduct } from "../components/types/Server"
 import boxpic1 from "../assets/images/withOutBg/img-prd10.webp"
-import boxpic2 from "../assets/images/withOutBg/img-prd2.webp"
-import boxpic3 from "../assets/images/withOutBg/img-prd4.webp"
-
 
 
 export default function Home() {
@@ -33,7 +28,7 @@ export default function Home() {
 
     return (
         <div className="bg-[var(--bg)] w-full">
-            <Header />
+
 
             <Container>
                 <div className="Slide_menu_section flex flex-row gap-6 mt-10">
@@ -233,7 +228,7 @@ export default function Home() {
 
 
 
-            <Footer />
+
         </div>
     )
 }

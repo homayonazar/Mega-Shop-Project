@@ -17,8 +17,7 @@ interface ShppingCartContextType {
     getProductQty: (id: number) => number;
     handleRemoveProduct: (id: number) => void;
     cartQty: number;
-    theme: "light" | "dark";
-    toggleTheme: () => void;
+
 }
 
 export const ShppingCartContext = createContext({} as ShppingCartContextType);
@@ -54,19 +53,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
     const cartQty = cartItem.reduce((total, item) => total + item.qty, 0);
 
-    // ----- Theme -----
-    const [theme, setTheme] = useLocalStorage<"light" | "dark">("theme", "light");
-
-    const toggleTheme = () => setTheme(prev => prev === "light" ? "dark" : "light");
-
-    useEffect(() => {
-        if (theme === "dark") {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-    }, [theme]);
-
     return (
         <ShppingCartContext.Provider value={{
             cartItem,
@@ -74,9 +60,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
             handleDecreaseProductQty,
             handleRemoveProduct,
             getProductQty,
-            cartQty,
-            theme,
-            toggleTheme
+            cartQty
         }}>
             {children}
         </ShppingCartContext.Provider>
