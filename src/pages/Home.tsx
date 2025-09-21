@@ -9,19 +9,23 @@ import img2Right from "../assets/images/img2Right.png"
 import Product from "../components/Product"
 import { useEffect, useState } from "react"
 import { getProducts } from "../components/Services/Api"
+import tvPic from "../assets/images/tv.webp"
+import type { IProduct } from "../components/types/Server"
+import boxpic1 from "../assets/images/withOutBg/img-prd10.webp"
+import boxpic2 from "../assets/images/withOutBg/img-prd2.webp"
+import boxpic3 from "../assets/images/withOutBg/img-prd4.webp"
 
 
 
+export default function Home() {
 
-function Home() {
+    const [products, setProducts] = useState<IProduct[]>([])
 
-    // const [products, setProducts] = useState<IProduct[]>([])
-
-    // useEffect(() => {
-    //     getProducts().then((result) => {
-    //         setProducts(result.products);
-    //     });
-    // }, []);
+    useEffect(() => {
+        getProducts().then((result) => {
+            setProducts(result.products);            
+        });
+    }, []);
 
 
 
@@ -78,53 +82,147 @@ function Home() {
 
                 </div>
 
-                <div className="2nd_section flex flex-row justify-between">
-                    <div className="box1 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                <div className="2nd_section grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-4 mb-20">
+                    <div className="box1 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                        <div className="icon m-4 text-xl text-blue-500">
+                            <i className="fas fa-truck"></i>
+                        </div>
                         <div className="textBox">
                             <p className="font-bold m-1">Free delivery</p>
-                            <p className="text-sm">Free Shipping for orders over $20</p>
+                            <p className="text-sm text-gray-600">Free Shipping for orders over $20</p>
                         </div>
                     </div>
-                    <div className="box2 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+
+                    <div className="box2 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                        <div className="icon m-4 text-xl text-green-500">
+                            <i className="fas fa-headset"></i>
+                        </div>
                         <div className="textBox">
                             <p className="font-bold m-1">Support 24/7</p>
-                            <p className="text-sm">24 hours a day, 7 days a week</p>
-                        </div></div>
-                    <div className="box3 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                            <p className="text-sm text-gray-600">24 hours a day, 7 days a week</p>
+                        </div>
+                    </div>
+
+                    <div className="box3 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                        <div className="icon m-4 text-xl text-yellow-500">
+                            <i className="fas fa-credit-card"></i>
+                        </div>
                         <div className="textBox">
                             <p className="font-bold m-1">Payment</p>
-                            <p className="text-sm">Pay with Multiple Credit Cards</p>
-                        </div></div>
-                    <div className="box4 w-1/5 me-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                            <p className="text-sm text-gray-600">Pay with Multiple Credit Cards</p>
+                        </div>
+                    </div>
+
+                    <div className="box4 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                        <div className="icon m-4 text-xl text-red-500">
+                            <i className="fas fa-shield-alt"></i>
+                        </div>
                         <div className="textBox">
                             <p className="font-bold m-1">Reliable</p>
-                            <p className="text-sm">Trusted by 2000+ major brands</p>
-                        </div></div>
-                    <div className="box5 w-1/5 ms-5 mt-5 h-27 border-1 border-gray-200 rounded-2xl p-5 flex - flex-row">
-                        <div className="icon m-4"><i className="fas fa-light fa-truck"></i></div>
+                            <p className="text-sm text-gray-600">Trusted by 2000+ major brands</p>
+                        </div>
+                    </div>
+
+                    <div className="box5 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                        <div className="icon m-4 text-xl text-purple-500">
+                            <i className="fas fa-undo"></i>
+                        </div>
                         <div className="textBox">
                             <p className="font-bold m-1">Guarantee</p>
-                            <p className="text-sm">Within 30 days for an exchange</p>
+                            <p className="text-sm text-gray-600">Within 30 days for an exchange</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="DealOfDay mt-10">
+                    <div className="textofDeal p-4 border-b border-gray-200">
+                        <i className="fa-solid fa-fire red-force text-3xl"></i>
+                        <p className="red-force inline text-2xl"><u> Today's Discount</u></p>
+                    </div>
+
+                    <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+                        {products.slice(4,8).map((item) => (
+                            <Link key={item.id} to={`/product/${item.id}`}>
+                                <Product {...item} />
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </Container>
+
+            {/* WithOutContainer */}
+            <div className="FullWidth_add w-full h-auto mt-15 bg-gradient-to-r from-[rgba(15,38,209,1)] to-[rgba(207,31,8,1)] flex flex-row ">
+                <div className="tv w-1/2 h-auto">
+                    <div className="img  ms-20 mt-10">
+                        <img src={tvPic} className="w-2/3 mb-8" alt="tv_picture" />
+                    </div>
+                </div>
+                <div className="tvText w-1/2 h-auto flex flex-col justify-center">
+                    <h2 className="text-white text-6xl font-poppins">
+                        GameConsole Destiny <br /> Special Edition
+                    </h2>
+                    <p className="my-10 yello-force text-4xl">$8.000</p>
+                    <button className="w-40 h-10 p-2 bg-white rounded my-5">Shop Now</button>
+                </div>
+            </div>
+
+            <Container>
+                <div className="DealOfDay mt-10">
+                    <div className="textofDeal p-4 border-b border-gray-200">
+                        <i className="fa-solid fa-fire red-force text-3xl"></i>
+                        <p className="red-force inline text-2xl"><u> Today's Discount</u></p>
+                    </div>
+
+                    <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+                        {products.slice(0, 8).map((item) => (
+                            <Link key={item.id} to={`/product/${item.id}`}>
+                                <Product {...item} />
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="prdctBoxes w-full h-80 flex">
+                    <div className="box1 w-1/4 p-5 bg-yellow-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
+                        <div className="leftSec">
+                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                        </div>
+                        <div className="tightSec">
+                            <img className="w-30" src={boxpic1} alt="" />
+                        </div>
+                    </div>
+                    <div className="box1 w-1/2 p-5 bg-red-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
+                        <div className="leftSec">
+                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                        </div>
+                        <div className="tightSec">
+                            <img className="w-30" src={boxpic1} alt="" />
+                        </div></div>
+                    <div className="box1 w-1/4 p-5 bg-green-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
+                        <div className="leftSec">
+                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                        </div>
+                        <div className="tightSec">
+                            <img className="w-30" src={boxpic1} alt="" />
                         </div></div>
                 </div>
 
-
                 <div className="DealOfDay mt-10">
-                    <div className="textofDeal p-4 border-b-1 border-gray-200">
-                        <i className="fa-solid fa-fire red-force text-3xl"></i> <p className="red-force inline text-2xl ">Deal Of The Day </p>
+                    <div className="textofDeal p-4 border-b border-gray-200">
+                        <i className="fa-solid fa-fire red-force text-3xl"></i>
+                        <p className="red-force inline text-2xl">Top Seller This Week</p>
                     </div>
-                    <div className="products_box w-full flex flex-row ">
-                        <Product />
-                        <Product />
-                        <Product />
-                        <Product />
 
+                    <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-20">
+                        {products.slice(2, 6).map((item) => (
+                            <Link key={item.id} to={`/product/${item.id}`}>
+                                <Product {...item} />
+                            </Link>
+                        ))}
                     </div>
                 </div>
+
+
             </Container>
 
 
@@ -134,11 +232,9 @@ function Home() {
 
 
 
-            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-            <br /><br /><br /><br /><br /><br />
+
             <Footer />
         </div>
     )
 }
 
-export default Home
