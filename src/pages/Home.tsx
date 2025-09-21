@@ -17,13 +17,13 @@ import boxpic3 from "../assets/images/withOutBg/img-prd4.webp"
 
 
 
-function Home() {
+export default function Home() {
 
     const [products, setProducts] = useState<IProduct[]>([])
 
     useEffect(() => {
         getProducts().then((result) => {
-            setProducts(result.products);
+            setProducts(result.products);            
         });
     }, []);
 
@@ -141,7 +141,7 @@ function Home() {
                     </div>
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                        {products.slice(4, 8).map((item) => (
+                        {products.slice(4,8).map((item) => (
                             <Link key={item.id} to={`/product/${item.id}`}>
                                 <Product {...item} />
                             </Link>
@@ -150,6 +150,7 @@ function Home() {
                 </div>
             </Container>
 
+            {/* WithOutContainer */}
             <div className="FullWidth_add w-full h-auto mt-15 bg-gradient-to-r from-[rgba(15,38,209,1)] to-[rgba(207,31,8,1)] flex flex-row ">
                 <div className="tv w-1/2 h-auto">
                     <div className="img  ms-20 mt-10">
@@ -237,4 +238,3 @@ function Home() {
     )
 }
 
-export default Home
