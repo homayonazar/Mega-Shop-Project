@@ -21,10 +21,10 @@ function Navbar() {
                                 <Link to="/Products">Products</Link>
                             </li>
                             <li>
-                                <Link to="/about">About - us</Link>
+                                <Link to="/aboutus">About - us</Link>
                             </li>
                             <li>
-                                <Link to="/contact">Call - us</Link>
+                                <Link to="/callus">Call - us</Link>
                             </li>
                         </ul>
                         <div className="cart">
