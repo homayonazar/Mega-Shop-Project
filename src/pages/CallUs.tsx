@@ -21,8 +21,9 @@ export default function CompanyForm() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    "X-API-KEY": "MySuperSecretKey123"
                 },
-                body: JSON.stringify({ name, email, phone }),
+                body: JSON.stringify({ name, email, phone })
             });
 
             const result = await response.json();
