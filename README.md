@@ -19,7 +19,13 @@ It provides a clean and responsive UI where users can browse products, add them 
 - **Tailwind CSS** for styling  
 - **React Router** for routing  
 - **Context API** for state management  
-- **Local Storage** for data persistence  
+- **Local Storage** for data persistence 
+
+
+============================================
+
+
+## Live Demo: Coming Soon
 
 ---
 
@@ -36,3 +42,8 @@ npm install
 
 # Run the development server
 npm run dev
+
+
+
+
+
