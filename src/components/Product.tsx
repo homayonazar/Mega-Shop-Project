@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import type { IProduct } from "./types/Server";
 import { useShppingCartContext } from "./contexts/ShppingCartContext";
 import { useState } from "react";
