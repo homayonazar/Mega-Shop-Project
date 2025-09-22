@@ -8,7 +8,7 @@ function Navbar() {
 
     return (
         <div>
-            <nav className="Navbar w-full h-auto bg-[var(--myGreen)]">
+            <nav className="Navbar w-full h-auto bg-[var(--myGreen)] hidden sm:block">
                 <Container>
                     <div className="navbar flex justify-between items-center">
                         <ul className="flex gap-4 py-3">
