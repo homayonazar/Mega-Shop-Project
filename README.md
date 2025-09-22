@@ -22,14 +22,15 @@ It provides a clean and responsive UI where users can browse products, add them 
 - **Local Storage** for data persistence 
 
 
-============================================
+---
 
 
-## Live Demo: Coming Soon
+## Live Demo
+[Click here to view the live demo](https://homayonazar.com/projects/Mega-Shop-Project/)
 
 ---
 
-## 📖 How to Run
+## 📖 How to import and run in your system
 ```bash
 # Clone this repository
 git clone https://github.com/homayonazar/Mega-Shop-Project.git
