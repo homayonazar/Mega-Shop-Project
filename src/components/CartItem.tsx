@@ -23,10 +23,10 @@ export default function CartItem({ id, qty }: ICartItem) {
 
   return (
     <Container>
-            <div className="flex justify-between bg-blue-100 w-full h-40 m-2 rounded-[15px] ">
+            <div className="flex justify-between bg-blue-100 w-full h-40 m-2 rounded-2xl mt-10 mb-10 ">
                 <div className="lll">
                     <div className="flex flex-row">
-                        <img className="h-40 p-2 rounded-[15px]" src={product?.imageUrl} alt="" />
+                        <img className="h-40 p-2 rounded-2xl" src={product?.imageUrl} alt="" />
                         <div className=" mt-2 flex flex-col">
                             <h2 className='font-bold' >{product?.title}</h2>
                             <span className="text-green-600"><span className='text-black'>Price is :</span> {product?.price}</span>

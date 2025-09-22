@@ -18,7 +18,7 @@ export default function Home() {
 
     useEffect(() => {
         getProducts().then((result) => {
-            setProducts(result.products);            
+            setProducts(result.products);
         });
     }, []);
 
@@ -27,7 +27,7 @@ export default function Home() {
 
 
     return (
-        <div className="bg-[var(--bg)] w-full">
+        <div className="bg-[var(--bg)]">
 
 
             <Container>
@@ -136,10 +136,8 @@ export default function Home() {
                     </div>
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                        {products.slice(4,8).map((item) => (
-                            <Link key={item.id} to={`/product/${item.id}`}>
-                                <Product {...item} />
-                            </Link>
+                        {products.slice(4, 8).map((item) => (
+                            <Product {...item} />
                         ))}
                     </div>
                 </div>
@@ -170,9 +168,7 @@ export default function Home() {
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
                         {products.slice(0, 8).map((item) => (
-                            <Link key={item.id} to={`/product/${item.id}`}>
-                                <Product {...item} />
-                            </Link>
+                            <Product {...item} />
                         ))}
                     </div>
                 </div>
@@ -180,7 +176,7 @@ export default function Home() {
                 <div className="prdctBoxes w-full h-80 flex">
                     <div className="box1 w-1/4 p-5 bg-yellow-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
                         <div className="leftSec">
-                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
                         </div>
                         <div className="tightSec">
                             <img className="w-30" src={boxpic1} alt="" />
@@ -188,14 +184,14 @@ export default function Home() {
                     </div>
                     <div className="box1 w-1/2 p-5 bg-red-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
                         <div className="leftSec">
-                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
                         </div>
                         <div className="tightSec">
                             <img className="w-30" src={boxpic1} alt="" />
                         </div></div>
                     <div className="box1 w-1/4 p-5 bg-green-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
                         <div className="leftSec">
-                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
                         </div>
                         <div className="tightSec">
                             <img className="w-30" src={boxpic1} alt="" />
@@ -210,9 +206,7 @@ export default function Home() {
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-20">
                         {products.slice(2, 6).map((item) => (
-                            <Link key={item.id} to={`/product/${item.id}`}>
-                                <Product {...item} />
-                            </Link>
+                            <Product {...item} />
                         ))}
                     </div>
                 </div>

@@ -71,3 +71,6 @@ p ,span , li , i ,h3 {
 .red-force {
   color: rgb(255, 59, 59) !important;
 }
+.black-force {
+  color: rgb(0, 0, 0) !important;
+}

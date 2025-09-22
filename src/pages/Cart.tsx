@@ -3,9 +3,7 @@ import { useShppingCartContext } from "../components/contexts/ShppingCartContext
 import { getProduct } from "../components/Services/Api";
 import type { IProduct } from "../components/types/Server";
 import Container from "../components/Container";
-import Navbar from "../components/Navbar";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import cartPic from "../assets/images/withOutBg/shopping-cart.png"
 import CartItem from "../components/CartItem";
 
 function Cart() {
@@ -29,32 +27,35 @@ function Cart() {
 
 
 
-  return (
-    <>
-
-    <Header/>
-            <div className="">
-                {cartItem.map((item) => (
-                    <CartItem key={item.id} {...item} />
-                ))}
+    return (
+        <>
+            <div className="bg-[var(--bg)]">
+                {cartItem.length > 0 ? (
+                    cartItem.map((item) => <CartItem key={item.id} {...item} />)
+                ) : (
+                    <div className="text-4xl mt-5 flex justify-center flex-col items-center m-10 shadow p-5">
+                        <img src={cartPic} alt="shoppingcart_photo" className="w-15 mb-3 " />
+                        <p className="border-t-1 border-gray-200">Your cart is empty!</p>
+                    </div>
+                )}
             </div>
 
             <Container>
-                <div>
-                    <div className="flex flex-col border-t-1 shadow mt-5">
-                        <p>Total Price : {totalPrice}</p>
-                        <p>Discount : 0</p>
-                        <p>Price after discount : {totalPrice}</p>
+                {cartItem.length > 0 && (
+                    <div>
+                        <div className="flex flex-col border-t-1 shadow mt-5">
+                            <p>Total Price : {totalPrice}</p>
+                            <p>Discount : 0</p>
+                            <p>Price after discount : {totalPrice}</p>
+                        </div>
+                        <div className="flex justify-end">
+                            <button className="p-1 m-2 cursor-pointer">Submit Order</button>
+                        </div>
                     </div>
-                    <div className="flex justify-end">
-                        <button className="p-1 m-2 cursor-pointer">Submit Order</button>
-                    </div>
-                </div>
+                )}
             </Container>
-
-        <Footer/>
         </>
-  )
+    )
 }
 
 export default Cart

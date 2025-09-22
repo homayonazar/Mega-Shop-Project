@@ -62,7 +62,7 @@ function Footer() {
                 </button>
             </div>
             <div className="SocialMedia flex flex-col w-full h-20bg-[var(--navbar)]">
-                <div className="flex flex-row justify-center gap-4 p-4">
+                <div className="flex flex-row justify-center gap-4 p-4 bg-[var(--bg)]">
                     <div className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-400">
                         <i className="fa-brands fa-instagram text-xl"></i>
                     </div>
@@ -79,7 +79,7 @@ function Footer() {
                         <i className="fa-brands fa-github text-xl"></i>
                     </div>
                 </div>
-                <div className="buttom_footer flex justify-center shadow border-t-1 border-gray-200 p-2">
+                <div className="buttom_footer flex justify-center shadow border-t-1 border-gray-200 p-2 bg-[var(--bg)]">
                     <span>© 2025. All right reserved – Designed by <a href="https://homayonazar.com/" className="text-blue-600 font-bold">Homayonazar</a></span>
                 </div>
             </div>
