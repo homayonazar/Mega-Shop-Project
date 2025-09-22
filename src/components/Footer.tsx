@@ -45,7 +45,7 @@ function Footer() {
                 </div>
 
             </div>
-            <div className="Sletter bg-[#333e48] flex justify-center items-center p-4">
+            <div className="Sletter bg-[#333e48] justify-center items-center p-4 hidden sm:flex">
                 <h2 className="text-white text-xl">
                     Join our newsletter for $10 offs
                     <span className=" text-white white-force ms-5 text-base">
