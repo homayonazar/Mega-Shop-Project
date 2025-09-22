@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useEffect } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface ShoppingCartProviderProps {
     children: React.ReactNode;
@@ -17,8 +16,30 @@ interface ShppingCartContextType {
     getProductQty: (id: number) => number;
     handleRemoveProduct: (id: number) => void;
     cartQty: number;
-    theme: "light" | "dark";
-    toggleTheme: () => void;
+
+}
+
+
+export function useLocalStorage<T>(key: string, initialValue: T) {
+  const [value, setValue] = useState<T>(() => {
+    try {
+      const localValue = localStorage.getItem(key);
+      if (localValue != null) {
+        return JSON.parse(localValue) as T;
+      } else {
+        return initialValue;
+      }
+    } catch (error) {
+      console.warn(`Invalid JSON in localStorage for key "${key}"`);
+      return initialValue;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue] as [typeof value, typeof setValue];
 }
 
 export const ShppingCartContext = createContext({} as ShppingCartContextType);
@@ -54,19 +75,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
     const cartQty = cartItem.reduce((total, item) => total + item.qty, 0);
 
-    // ----- Theme -----
-    const [theme, setTheme] = useLocalStorage<"light" | "dark">("theme", "light");
-
-    const toggleTheme = () => setTheme(prev => prev === "light" ? "dark" : "light");
-
-    useEffect(() => {
-        if (theme === "dark") {
-            document.documentElement.classList.add("dark");
-        } else {
-            document.documentElement.classList.remove("dark");
-        }
-    }, [theme]);
-
     return (
         <ShppingCartContext.Provider value={{
             cartItem,
@@ -74,9 +82,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
             handleDecreaseProductQty,
             handleRemoveProduct,
             getProductQty,
-            cartQty,
-            theme,
-            toggleTheme
+            cartQty
         }}>
             {children}
         </ShppingCartContext.Provider>

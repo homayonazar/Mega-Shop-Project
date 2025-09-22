@@ -1,6 +1,4 @@
 import Container from "../components/Container"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
 import { Link } from "react-router-dom"
 import imageMiddle from "../assets/images/middleImage.jpg"
 import middleimagePhoto from "../assets/images/img-prd9.webp"
@@ -12,9 +10,6 @@ import { getProducts } from "../components/Services/Api"
 import tvPic from "../assets/images/tv.webp"
 import type { IProduct } from "../components/types/Server"
 import boxpic1 from "../assets/images/withOutBg/img-prd10.webp"
-import boxpic2 from "../assets/images/withOutBg/img-prd2.webp"
-import boxpic3 from "../assets/images/withOutBg/img-prd4.webp"
-
 
 
 export default function Home() {
@@ -23,7 +18,7 @@ export default function Home() {
 
     useEffect(() => {
         getProducts().then((result) => {
-            setProducts(result.products);            
+            setProducts(result.products);
         });
     }, []);
 
@@ -32,12 +27,12 @@ export default function Home() {
 
 
     return (
-        <div className="bg-[var(--bg)] w-full">
-            <Header />
+        <div className="bg-[var(--bg)]">
+
 
             <Container>
                 <div className="Slide_menu_section flex flex-row gap-6 mt-10">
-                    <div className="sideMenu w-1/5 bg-[var(--bg)] h-auto border-1 border-gray-200 rounded-2xl">
+                    <div className="sideMenu w-1/5 bg-[var(--bg)] hidden lg:block  h-auto border-1 border-gray-200 rounded-2xl ">
                         <div className="allDepartment bg-[#ed3b3b] p-4.5 rounded-t-2xl">
                             <i className="fa-solid fa-bars white-force me-2 text-xl"></i><p className="inline text-lg text-white white-force">All Department</p>
                         </div>
@@ -57,7 +52,7 @@ export default function Home() {
                             </ul>
                         </nav>
                     </div>
-                    <div className="middlegalery w-3/5 h-auto relative ">
+                    <div className="middlegalery w-3/5 h-auto relative hidden sm:block ">
                         <div className="middleImage absolute inset-0 rounded-2xl z-10">
                             <img src={imageMiddle} alt="middleImage" className="w-full h-full object-cover rounded-2xl" />
                             <div className="texts z-20 absolute top-20 left-10">
@@ -71,7 +66,7 @@ export default function Home() {
                             <img src={middleimagePhoto} alt="" className="w-80 h-auto object-contain" />
                         </div>
                     </div>
-                    <div className="rightGalery w-1.9/5  h-auto">
+                    <div className="rightGalery w-1.9/5  h-auto ">
                         <div className="img 1">
                             <Link to="/"><img className=" p-2 rounded-2xl" src={img1Right} alt="" /></Link>
                         </div>
@@ -141,19 +136,17 @@ export default function Home() {
                     </div>
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                        {products.slice(4,8).map((item) => (
-                            <Link key={item.id} to={`/product/${item.id}`}>
-                                <Product {...item} />
-                            </Link>
+                        {products.slice(4, 8).map((item) => (
+                            <Product {...item} />
                         ))}
                     </div>
                 </div>
             </Container>
 
             {/* WithOutContainer */}
-            <div className="FullWidth_add w-full h-auto mt-15 bg-gradient-to-r from-[rgba(15,38,209,1)] to-[rgba(207,31,8,1)] flex flex-row ">
+            <div className="FullWidth_add w-full h-auto mt-16 bg-gradient-to-r from-[rgba(15,38,209,1)] to-[rgba(207,31,8,1)]  hidden sm:flex">
                 <div className="tv w-1/2 h-auto">
-                    <div className="img  ms-20 mt-10">
+                    <div className="img ml-5 mt-10">
                         <img src={tvPic} className="w-2/3 mb-8" alt="tv_picture" />
                     </div>
                 </div>
@@ -175,32 +168,30 @@ export default function Home() {
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
                         {products.slice(0, 8).map((item) => (
-                            <Link key={item.id} to={`/product/${item.id}`}>
-                                <Product {...item} />
-                            </Link>
+                            <Product {...item} />
                         ))}
                     </div>
                 </div>
 
                 <div className="prdctBoxes w-full h-80 flex">
-                    <div className="box1 w-1/4 p-5 bg-yellow-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
+                    <div className="box1 w-full sm:w-1/4 p-5 bg-yellow-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center  ">
                         <div className="leftSec">
-                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
                         </div>
                         <div className="tightSec">
                             <img className="w-30" src={boxpic1} alt="" />
                         </div>
                     </div>
-                    <div className="box1 w-1/2 p-5 bg-red-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
+                    <div className="box1 w-1/2 p-5 bg-red-200 rounded-lg m-5 border-1 border-gray-400  flex-row items-center hidden sm:flex">
                         <div className="leftSec">
-                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
                         </div>
                         <div className="tightSec">
                             <img className="w-30" src={boxpic1} alt="" />
                         </div></div>
-                    <div className="box1 w-1/4 p-5 bg-green-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center ">
+                    <div className="box1 w-1/4 p-5 bg-green-200 rounded-lg m-5 border-1 border-gray-400  flex-row items-center hidden lg:flex ">
                         <div className="leftSec">
-                            <p className=" text-2xl font-bold">SALE <span>70%</span> <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
                         </div>
                         <div className="tightSec">
                             <img className="w-30" src={boxpic1} alt="" />
@@ -215,9 +206,7 @@ export default function Home() {
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-20">
                         {products.slice(2, 6).map((item) => (
-                            <Link key={item.id} to={`/product/${item.id}`}>
-                                <Product {...item} />
-                            </Link>
+                            <Product {...item} />
                         ))}
                     </div>
                 </div>
@@ -233,7 +222,7 @@ export default function Home() {
 
 
 
-            <Footer />
+
         </div>
     )
 }
