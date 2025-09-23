@@ -103,6 +103,11 @@ function Header() {
             </div>
 
 
+            <div className="cartSideMenu fixed bg-[var(--myBlue)] border-1 border-gray-200 top-0 right-0 w-100 h-full z-60 hidden sm:block ">
+                cartItem
+            </div>
+
+
             <Container>
                 <div className="Header_section w-full h-auto flex justify-between items-center">
                     <div className="Logo_of_Site w-50 py-2 ">

@@ -7,9 +7,10 @@ import { ShoppingCartProvider } from './components/contexts/ShppingCartContext';
 import Products from './pages/Products';
 import AboutUs from './pages/AboutUs';
 import CallUs from './pages/CallUs';
+import NotFound from './pages/NotFound';
 
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter basename="/projects/Mega-Shop-Project">
       <ShoppingCartProvider>
@@ -21,11 +22,12 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/callus" element={<CallUs />} />
+            <Route path="*" element={<NotFound />} />
+
+
           </Routes>
         </Layout>
       </ShoppingCartProvider>
     </BrowserRouter>
   );
 }
-
-export default App;
