@@ -21,16 +21,16 @@ function Navbar() {
                                 <Link to="/Products">Products</Link>
                             </li>
                             <li>
-                                <Link to="/aboutus">About Us</Link>
+                                <Link to="/aboutus">About - us</Link>
                             </li>
                             <li>
-                                <Link to="/callus">Contact Us </Link>
+                                <Link to="/callus">Call - us</Link>
                             </li>
                         </ul>
                         <div className="cart">
                             <Link to="/cart">
                             <button 
-                                className="relative p-4 cursor-pointer transition-colors duration-300 text-[var(--text)]"
+                                className="relative p-4 cursor-pointer transition-colors duration-300"
                             >
                                 Cart
                                 {cartQty !== 0 && (
