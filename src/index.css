@@ -31,7 +31,7 @@ body {
         rgba(255, 255, 255, 1) 0%,
         rgb(235, 235, 235) 50%,
         rgba(255, 255, 255, 1) 100%);
-    --textColor: #000000;
+    --textColor: #455aff;
     --dashboard-bg : #f5f5f5;
     --dashboard-font: ;
     --dashboard-hover: #98aead;

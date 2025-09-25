@@ -30,7 +30,7 @@ function Navbar() {
                         <div className="cart">
                             <Link to="/cart">
                             <button 
-                                className="relative p-4 cursor-pointer transition-colors duration-300"
+                                className="relative p-4 cursor-pointer transition-colors duration-300 text-[var(--text)]"
                             >
                                 Cart
                                 {cartQty !== 0 && (

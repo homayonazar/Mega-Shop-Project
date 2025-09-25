@@ -127,33 +127,31 @@ function Header() {
                     {cartItem.map((item, index) => {
                         const product = products[index];
                         return (
-                            <div
-                                key={item.id}
-                                className="flex justify-between flex-col  items-start bg-[var(--myWhite)] p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                                <div className="flex items-center gap-4">
-                                    {product && (
-                                        <img
-                                            className="h-16 w-16 object-cover rounded-lg border border-gray-200"
-                                            src={product.imageUrl}
-                                            alt={product.title} />
-                                    )}
+                            <div key={item.id} className="flex justify-between flex-col  items-start bg-[var(--myWhite)] p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+                                <div className="flex items-center gap-4"> {product && (
+                                    <img
+                                        className="h-16 w-16 object-cover rounded-lg border border-gray-200"
+                                        src={product.imageUrl}
+                                        alt={product.title} />
+                                )}
                                     <div className="flex flex-col">
                                         <h2 className="font-semibold text-[var(--text)] text-lg truncate max-w-[200px]">{product?.title}</h2>
                                         <span className="text-green-600 font-medium">
                                             <span className="text-[var(--text)]">Price: </span>${product?.price.toFixed(2)}</span>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-2 ">
+                                <div className="flex items-center flex-row-reverse gap-2 ml-auto">
+
                                     <button
                                         onClick={() => handleDecreaseProductQty(item.id)}
-                                        className="px-3 py-1 bg-gray-200 text-[var(--text)] rounded-full hover:bg-gray-300 transition-colors duration-200"
+                                        className="px-3 py-1 bg-[var(--navbar)] text-[var(--text)] rounded-full hover:bg-gray-300 transition-colors duration-200 "
                                     >
                                         -
                                     </button>
-                                    <span className="text-lg font-medium text-[var(--text)]">{item.qty}</span>
+                                    <span className="text-lg font-medium text-[var(--bg)]">{item.qty}</span>
                                     <button
                                         onClick={() => handleIncreaseProductQty(item.id)}
-                                        className="px-3 py-1 bg-gray-200 text-[var(--text)] rounded-full hover:bg-gray-300 transition-colors duration-200"
+                                        className="px-3 py-1 bg-[var(--navbar)] text-[var(--text)] rounded-full hover:bg-gray-300 transition-colors duration-200"
                                     >
                                         +
                                     </button>
@@ -165,6 +163,9 @@ function Header() {
                             </div>
                         );
                     })}
+                    <div className=" fixed bottom-10 left-1/2 transform -translate-x-1/2">
+                        <Link to="/cart"><button className="p-4 rounded-2xl text-[var(--bg)] bg-[var(--textColor)] text-xl font-bold">Go to CART</button></Link>
+                    </div>
                 </div>
             </div>
 
