@@ -24,9 +24,9 @@ export default function Product({ id, title, price, imageUrl }: ProductProps) {
                 src={imageUrl}
                 alt={title}
             />
-            <div className="flex justify-between items-center p-4">
+            <div className="flex justify-between items-center p-4 bg-[var(--navbar)]">
                 <Link to={`/product/${id}`}>
-                    <h2 className="font-poppins font-semibold text-lg">{title}</h2>
+                    <h2 className="font-poppins font-semibold text-lg text-[var(--text)]">{title}</h2>
                 </Link>
                 <p className="red-force font-bold text-lg">{price} $</p>
             </div>

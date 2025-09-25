@@ -31,7 +31,7 @@ export default function Home() {
 
 
             <Container>
-                <div className="Slide_menu_section flex flex-row gap-6 mt-10">
+                <div className="Slide_menu_section flex flex-row gap-6 pt-10">
                     <div className="sideMenu w-1/5 bg-[var(--bg)] hidden lg:block  h-auto border-1 border-gray-200 rounded-2xl ">
                         <div className="allDepartment bg-[#ed3b3b] p-4.5 rounded-t-2xl">
                             <i className="fa-solid fa-bars white-force me-2 text-xl"></i><p className="inline text-lg text-white white-force">All Department</p>
@@ -55,15 +55,15 @@ export default function Home() {
                     <div className="middlegalery w-3/5 h-auto relative hidden sm:block ">
                         <div className="middleImage absolute inset-0 rounded-2xl z-10">
                             <img src={imageMiddle} alt="middleImage" className="w-full h-full object-cover rounded-2xl" />
-                            <div className="texts z-20 absolute top-20 left-10">
+                            <div className="texts z-20 absolute top-10 left-10">
                                 <h2 className="text-white text-7xl mb-10">The new <br />standard TV </h2>
                                 <p className="yello-force text-5xl p-5">$287 </p>
                                 <button className="text-white text-lg cursor-pointer mt-10">Shop Now</button>
                             </div>
                         </div>
 
-                        <div className="middleimagePhoto absolute z-20 top-10 right-5 transform transition duration-300 ease-in-out hover:scale-105">
-                            <img src={middleimagePhoto} alt="" className="w-80 h-auto object-contain" />
+                        <div className="middleimagePhoto absolute z-20 top-45 right-5 transform transition duration-300 ease-in-out hover:scale-105">
+                            <img src={middleimagePhoto} alt="" className="w-80  h-auto object-contain" />
                         </div>
                     </div>
                     <div className="rightGalery w-1.9/5  h-auto ">
@@ -77,18 +77,18 @@ export default function Home() {
 
                 </div>
 
-                <div className="2nd_section grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-4 mb-20">
-                    <div className="box1 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                <div className="2nd_section grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 p-4 mb-20">
+                    <div className="box1 w-full h-27 border border-gray-200 rounded-2xl  flex flex-row items-center">
                         <div className="icon m-4 text-xl text-blue-500">
-                            <i className="fas fa-truck"></i>
+                            <i className="fas fa-truck "></i>
                         </div>
                         <div className="textBox">
-                            <p className="font-bold m-1">Free delivery</p>
-                            <p className="text-sm text-gray-600">Free Shipping for orders over $20</p>
+                            <p className="font-bold m-1 ">Free delivery</p>
+                            <p className="text-sm text-gray-600 ">Free Shipping for orders over $20</p>
                         </div>
                     </div>
 
-                    <div className="box2 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                    <div className="box2 w-full h-27 border border-gray-200 rounded-2xl flex flex-row items-center">
                         <div className="icon m-4 text-xl text-green-500">
                             <i className="fas fa-headset"></i>
                         </div>
@@ -98,7 +98,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="box3 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                    <div className="box3 w-full h-27 border border-gray-200 rounded-2xl flex flex-row items-center">
                         <div className="icon m-4 text-xl text-yellow-500">
                             <i className="fas fa-credit-card"></i>
                         </div>
@@ -108,7 +108,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="box4 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                    <div className="box4 w-full h-27 border border-gray-200 rounded-2xl flex flex-row items-center">
                         <div className="icon m-4 text-xl text-red-500">
                             <i className="fas fa-shield-alt"></i>
                         </div>
@@ -118,7 +118,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="box5 w-full h-27 border border-gray-200 rounded-2xl p-5 flex flex-row items-center">
+                    <div className="box5 w-full h-27 border border-gray-200 rounded-2xl  flex flex-row items-center">
                         <div className="icon m-4 text-xl text-purple-500">
                             <i className="fas fa-undo"></i>
                         </div>
@@ -147,7 +147,7 @@ export default function Home() {
             <div className="FullWidth_add w-full h-auto mt-16 bg-gradient-to-r from-[rgba(15,38,209,1)] to-[rgba(207,31,8,1)]  hidden sm:flex">
                 <div className="tv w-1/2 h-auto">
                     <div className="img ml-5 mt-10">
-                        <img src={tvPic} className="w-2/3 mb-8" alt="tv_picture" />
+                        <img src={tvPic} className="w-2/3 mb-8 ms-10" alt="tv_picture" />
                     </div>
                 </div>
                 <div className="tvText w-1/2 h-auto flex flex-col justify-center">
@@ -182,14 +182,15 @@ export default function Home() {
                             <img className="w-30" src={boxpic1} alt="" />
                         </div>
                     </div>
-                    <div className="box1 w-1/2 p-5 bg-red-200 rounded-lg m-5 border-1 border-gray-400  flex-row items-center hidden sm:flex">
+                    <div className="box2 w-1/2 p-5 bg-red-200 rounded-lg m-5 border-1 border-gray-400  flex-row justify-between items-center hidden sm:flex">
                         <div className="leftSec">
                             <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
                         </div>
                         <div className="tightSec">
                             <img className="w-30" src={boxpic1} alt="" />
                         </div></div>
-                    <div className="box1 w-1/4 p-5 bg-green-200 rounded-lg m-5 border-1 border-gray-400  flex-row items-center hidden lg:flex ">
+                    <div className="box3
+                     w-1/4 p-5 bg-green-200 rounded-lg m-5 border-1 border-gray-400  flex-row items-center hidden lg:flex ">
                         <div className="leftSec">
                             <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
                         </div>
