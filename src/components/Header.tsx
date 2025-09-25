@@ -103,9 +103,9 @@ function Header() {
             </div>
 
 
-            <div className="cartSideMenu fixed bg-[var(--myBlue)] border-1 border-gray-200 top-0 right-0 w-100 h-full z-60 hidden sm:block ">
+            {/* <div className="cartSideMenu fixed bg-[var(--myBlue)] border-1 border-gray-200 top-0 right-0 w-100 h-full z-60 hidden sm:block ">
                 cartItem
-            </div>
+            </div> */}
 
 
             <Container>
@@ -120,10 +120,10 @@ function Header() {
                         <input
                             type="text"
                             placeholder="Search for products"
-                            className="flex-1 px-5 py-3 outline-none text-[var(--text)]"
+                            className="flex-1 px-5 py-3 outline-none white-force]"
                         />
                         <button className="px-4 py-2 bg-gray-600 text-white">
-                            <i className="fas fa-light fa-magnifying-glass"></i>
+                            <i className="fas fa-light fa-magnifying-glass white-force"></i>
                         </button>
                     </div>
                     <div className="Calling hidden lg:block">

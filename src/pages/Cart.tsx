@@ -49,7 +49,7 @@ function Cart() {
                             <p>Price after discount : {totalPrice}</p>
                         </div>
                         <div className="flex justify-end">
-                            <button className="p-1 m-2 cursor-pointer">Submit Order</button>
+                            <button className=" m-2 cursor-pointer text-[var(--text)] bg-[var(--myBlue)] rounded p-2">Submit Order</button>
                         </div>
                     </div>
                 )}
