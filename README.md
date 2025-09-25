@@ -23,13 +23,12 @@ It provides a clean and responsive UI where users can browse products, add them 
 
 
 ---
-
+⚠️ **Note:** This project is currently under active development and will be gradually updated and improved over time. New features and enhancements will be added in future releases.
 
 ## Live Demo
 [Click here to view the live demo](https://homayonazar.com/projects/Mega-Shop-Project/)
 
 ---
-
 ## 📖 How to import and run in your system
 ```bash
 # Clone this repository
