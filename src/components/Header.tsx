@@ -92,7 +92,9 @@ function Header() {
                             )}
                             {/* Modal */}
                             {isOpenSign && (
-                                <div className="openSignModal fixed bg-[var(--myBlue)] border-1 border-gray-500 p-4 w-[450px] h-[300px] top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] flex items-center justify-center text-white text-xl font-bold rounded-2xl">
+                                <div className="openSignModal fixed bg-[var(--myBlue)] border-1 border-gray-500 p-4 w-[450px] h-[300px]
+                                 top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] flex items-center justify-center
+                                 text-white text-xl font-bold rounded-2xl">
                                     <p>Here Sign-in | Sign-up Menu will be show</p>
                                 </div>
                             )}
