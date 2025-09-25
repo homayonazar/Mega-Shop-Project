@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom"
 import Container from "./Container"
-import { useShppingCartContext } from "./contexts/ShppingCartContext";
+// import { useShppingCartContext } from "./contexts/ShppingCartContext";
 
 function Navbar() {
 
-    const { cartQty } = useShppingCartContext();
+    // const { cartQty } = useShppingCartContext();
 
     return (
         <div>
@@ -28,7 +28,7 @@ function Navbar() {
                             </li>
                         </ul>
                         <div className="cart">
-                            <Link to="/cart">
+                            {/* <Link to="/cart">
                             <button 
                                 className="relative p-4 cursor-pointer transition-colors duration-300 text-[var(--text)]"
                             >
@@ -39,7 +39,7 @@ function Navbar() {
                                     </span>
                                 )}
                             </button>
-                        </Link>
+                        </Link> */}
                             <Link to="/"><i className="fas fa-light fa-heart ms-10 text-lg"></i><p className="inline px-1">Favorite</p></Link>
 
                         </div>

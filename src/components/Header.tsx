@@ -46,6 +46,7 @@ function Header() {
 
     const [isOpen, setIsOpen] = useState(false);
     const [isOpen2, setIsOpen2] = useState(false);
+    const [isOpenSign, setIsOpenSign] = useState(false)
 
     return (
         <div className="shadow bg-[var(--bg)]">
@@ -76,10 +77,26 @@ function Header() {
                             <span className="font-semibold">English</span>
                         </button>
 
-                        <button className="flex items-center gap-2 text-gray-700 cursor-pointer ">
-                            <i className="far fa-user text-lg"></i>
-                            <span className="font-medium me-3">Sign-in</span>
-                        </button>
+                        <div className="Sign-in">
+                            {/* Button sign-in*/}
+                            <button className="flex items-center gap-2 text-gray-700 cursor-pointer" onClick={() => setIsOpenSign(true)}>
+                                <i className="far fa-user text-lg"></i>
+                                <span className="font-medium me-3">Sign-in</span>
+                            </button>
+
+                            {/* bg Modal blur */}
+                            {isOpenSign && (
+                                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-80" onClick={() => setIsOpenSign(false)}>
+
+                                </div>
+                            )}
+                            {/* Modal */}
+                            {isOpenSign && (
+                                <div className="openSignModal fixed bg-[var(--myBlue)] border-1 border-gray-500 p-4 w-[450px] h-[300px] top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] flex items-center justify-center text-white text-xl font-bold rounded-2xl">
+                                    <p>Here Sign-in | Sign-up Menu will be show</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,8 +110,7 @@ function Header() {
             </div>
             <div
                 className={`fixed top-0 right-0 w-70 h-full bg-[var(--bg)] transition-transform duration-500 z-40 sm:hidden
-        ${isOpen ? "translate-x-0" : "translate-x-full"}`}
-            >
+                 ${isOpen ? "translate-x-0" : "translate-x-full"}`} >
                 <div className="middleSection flex flex-col items-center">
                     <div className="HelloLogo w-40 h-20 bg-amber-300 mt-10">
                         <p className="text-center">Logo will disappear here</p>
