@@ -42,6 +42,9 @@ function Header() {
         }
     }, [darkMode]);
 
+    const { cartQty } = useShppingCartContext();
+
+
     const toggleDarkMode = () => setDarkMode(v => !v);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -129,9 +132,15 @@ function Header() {
             </div>
 
             {/* ----- cart sideBar ----- */}
+
             <div className="cartFixedButton fixed bottom-20 left-10 z-70 ">
                 <div className="bgCart rounded-full bg-green-200 border-1 border-gray-300 p-4 cursor-pointer " onClick={() => setIsOpen2(!isOpen2)}>
                     <img src={cartImg} className="w-10" alt="" />
+                    {cartQty !== 0 && (
+                        <span className="absolute top-0 -right-2 w-7 h-7 text-lsm font-bold bg-red-500 white-force flex justify-center items-center rounded-full">
+                            {cartQty}
+                        </span>
+                    )}
                 </div>
             </div>
             <div

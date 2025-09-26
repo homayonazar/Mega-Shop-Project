@@ -32,9 +32,9 @@ export default function CartItem({ id, qty }: ICartItem) {
                     </div>
                 </div>
                 <div className="flex items-center me-5 flex-row-reverse">
-                    <button onClick={() => handleIncreaseProductQty(id)} className="mx-2 p-2 cursor-pointer"> + </button>
+                    <button onClick={() => handleIncreaseProductQty(id)} className="mx-2 p-2 cursor-pointer text-[var(--text)] bg-[var(--bg)] rounded-full"> + </button>
                     <span className="text-2xl"> {qty}  </span>
-                    <button onClick={() => handleDecreaseProductQty(id)} className="mx-2 p-2 cursor-pointer"> - </button>
+                    <button onClick={() => handleDecreaseProductQty(id)} className="mx-2 p-2 cursor-pointer text-[var(--text)] bg-[var(--bg)] rounded-full"> - </button>
                     <button onClick={() => handleRemoveProduct(id)} className="mx-2 p-2 cursor-pointer">Remove</button>
 
                 </div>
