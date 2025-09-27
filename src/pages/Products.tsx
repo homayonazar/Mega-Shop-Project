@@ -6,26 +6,91 @@ import Container from "../components/Container";
 
 function Products() {
 
-    const [products, setProducts] = useState<IProduct[]>([])
+    // maping pdcts
+    const [products, setProducts] = useState<IProduct[]>([]);
+    const [sortOption, setSortOption] = useState<string>("");
+
     useEffect(() => {
         getProducts().then((result) => {
             setProducts(result.products);
         });
     }, []);
 
+    // Sorting Func
+    const sortedProducts = [...products].sort((a, b) => {
+        if (sortOption === "highPrice") {
+            return b.price - a.price; 
+        }
+        if (sortOption === "lowPrice") {
+            return a.price - b.price;
+        }
+        return 0; 
+    });
+
     return (
         <div>
             <Container>
                 <div className="pdctSec flex flex-row ">
-                    <div className="filterSec w-1/4  h-auto bg-amber-400 hidden sm:block">
-                        <div className="fff w-full ">
-                            Filter
+                    <div className="filterSec w-[250px]  h-auto hidden sm:block mt-5 border p-2 rounded">
+                        <div className="Sorting fff w-full flex flex-col border p-3 rounded">
+                            <h2 className="text-center font-bold text-lg mt-2">Sorting</h2>
+
+                            <label className="flex gap-2 ">
+                                <input type="radio" name="sorting" value="highPrice" onChange={(e) => setSortOption(e.target.value)} />
+                                High Price
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="radio" name="sorting" value="lowPrice" onChange={(e) => setSortOption(e.target.value)} />
+                                Low Price
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="radio" name="sorting" value="popular" />
+                                Popular products
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="radio" name="sorting" value="visited" />
+                                Most Visited
+                            </label>
+                        </div>
+                        <div className="colorCheck fff w-full flex flex-col border mt-5 p-3 rounded">
+                            <h2 className="text-center font-bold text-lg mt-2">Color Filter</h2>
+
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="highPrice" />
+                                white
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="lowPrice" />
+                                black
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="popular" />
+                                purple
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="visited" />
+                                gary
+                            </label>
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="visited" />
+                                blue
+                            </label>
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="visited" />
+                                red
+                            </label>
                         </div>
                     </div>
                     <div className="productSec sm:w-3/4 w-full">
-                        <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5  p-4">
-                            {products.map((item) => (
-                                <Product {...item} />
+                        <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
+                            {sortedProducts.map((item) => (
+                                <Product key={item.id} {...item} />
                             ))}
                         </div>
                     </div>
