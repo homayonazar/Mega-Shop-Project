@@ -19,12 +19,12 @@ function Products() {
     // Sorting Func
     const sortedProducts = [...products].sort((a, b) => {
         if (sortOption === "highPrice") {
-            return b.price - a.price; 
+            return b.price - a.price;
         }
         if (sortOption === "lowPrice") {
             return a.price - b.price;
         }
-        return 0; 
+        return 0;
     });
 
     return (
