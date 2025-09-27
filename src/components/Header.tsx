@@ -42,6 +42,9 @@ function Header() {
         }
     }, [darkMode]);
 
+    const { cartQty } = useShppingCartContext();
+
+
     const toggleDarkMode = () => setDarkMode(v => !v);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -92,7 +95,9 @@ function Header() {
                             )}
                             {/* Modal */}
                             {isOpenSign && (
-                                <div className="openSignModal fixed bg-[var(--myBlue)] border-1 border-gray-500 p-4 w-[450px] h-[300px] top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] flex items-center justify-center text-white text-xl font-bold rounded-2xl">
+                                <div className="openSignModal fixed bg-[var(--myBlue)] border-1 border-gray-500 p-4 w-[450px] h-[300px]
+                                 top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] flex items-center justify-center
+                                 text-white text-xl font-bold rounded-2xl">
                                     <p>Here Sign-in | Sign-up Menu will be show</p>
                                 </div>
                             )}
@@ -127,9 +132,15 @@ function Header() {
             </div>
 
             {/* ----- cart sideBar ----- */}
+
             <div className="cartFixedButton fixed bottom-20 left-10 z-70 ">
                 <div className="bgCart rounded-full bg-green-200 border-1 border-gray-300 p-4 cursor-pointer " onClick={() => setIsOpen2(!isOpen2)}>
                     <img src={cartImg} className="w-10" alt="" />
+                    {cartQty !== 0 && (
+                        <span className="absolute top-0 -right-2 w-7 h-7 text-lsm font-bold bg-red-500 white-force flex justify-center items-center rounded-full">
+                            {cartQty}
+                        </span>
+                    )}
                 </div>
             </div>
             <div

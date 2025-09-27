@@ -56,7 +56,7 @@ export default function Home() {
                         <div className="middleImage absolute inset-0 rounded-2xl z-10">
                             <img src={imageMiddle} alt="middleImage" className="w-full h-full object-cover rounded-2xl" />
                             <div className="texts z-20 absolute top-10 left-10">
-                                <h2 className="text-white text-7xl mb-10">The new <br />standard TV </h2>
+                                <h2 className="text-white text-7xl mb-10 white-force">The new <br />standard TV </h2>
                                 <p className="yello-force text-5xl p-5">$287 </p>
                                 <button className="text-white text-lg cursor-pointer mt-10">Shop Now</button>
                             </div>
@@ -151,7 +151,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="tvText w-1/2 h-auto flex flex-col justify-center">
-                    <h2 className="text-white text-6xl font-poppins">
+                    <h2 className="text-white text-6xl font-poppins white-force">
                         GameConsole Destiny <br /> Special Edition
                     </h2>
                     <p className="my-10 yello-force text-4xl">$8.000</p>
