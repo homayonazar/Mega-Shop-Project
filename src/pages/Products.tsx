@@ -31,9 +31,9 @@ function Products() {
         <div>
             <Container>
                 <div className="pdctSec flex flex-row ">
-                    <div className="filterSec w-[250px]  h-auto hidden sm:block mt-5 border p-2 rounded">
-                        <div className="Sorting fff w-full flex flex-col border p-3 rounded">
-                            <h2 className="text-center font-bold text-lg mt-2">Sorting</h2>
+                    <div className="filterSec w-[250px]  h-auto hidden sm:block mt-5 border p-2 rounded-2xl border-gray-300 mb-10 ">
+                        <div className="Sorting fff w-full flex flex-col border p-3 rounded-2xl border-gray-300">
+                            <h2 className="text-center font-bold text-lg mt-2 border-b-1 border-b-gray-300 mb-2">Sorting</h2>
 
                             <label className="flex gap-2 ">
                                 <input type="radio" name="sorting" value="highPrice" onChange={(e) => setSortOption(e.target.value)} />
@@ -55,35 +55,58 @@ function Products() {
                                 Most Visited
                             </label>
                         </div>
-                        <div className="colorCheck fff w-full flex flex-col border mt-5 p-3 rounded">
-                            <h2 className="text-center font-bold text-lg mt-2">Color Filter</h2>
+                        <div className="colorCheck fff w-full flex flex-col border mt-5 p-3 rounded-2xl border-gray-300">
+                            <h2 className="text-center font-bold text-lg mt-2 border-b-1 border-b-gray-300 mb-2">Color Filter</h2>
 
                             <label className="flex gap-2">
                                 <input type="checkbox" name="sorting" value="highPrice" />
-                                white
+                                White
                             </label>
 
                             <label className="flex gap-2">
                                 <input type="checkbox" name="sorting" value="lowPrice" />
-                                black
+                                Black
                             </label>
 
                             <label className="flex gap-2">
                                 <input type="checkbox" name="sorting" value="popular" />
-                                purple
+                                Purple
                             </label>
 
                             <label className="flex gap-2">
                                 <input type="checkbox" name="sorting" value="visited" />
-                                gary
+                                Gary
                             </label>
                             <label className="flex gap-2">
                                 <input type="checkbox" name="sorting" value="visited" />
-                                blue
+                                Blue
                             </label>
                             <label className="flex gap-2">
                                 <input type="checkbox" name="sorting" value="visited" />
-                                red
+                                Red
+                            </label>
+                        </div>
+                        <div className="colorCheck fff w-full flex flex-col border mt-5 p-3 rounded-2xl border-gray-300">
+                            <h2 className="text-center font-bold text-lg mt-2 border-b-1 border-b-gray-300 mb-2">AnyThing else</h2>
+
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="highPrice" />
+                                Choice-1
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="lowPrice" />
+                                Choice-2
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="popular" />
+                                Choice-3
+                            </label>
+
+                            <label className="flex gap-2">
+                                <input type="checkbox" name="sorting" value="visited" />
+                                Choice-4
                             </label>
                         </div>
                     </div>

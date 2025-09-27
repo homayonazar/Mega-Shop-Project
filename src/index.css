@@ -58,7 +58,7 @@ body {
     --textColor: #ffffff;
 }
 
-p ,span , li , i ,h3 {
+p ,span , li , i ,h3,label,h2 {
     color: var(--text);
 } 
 
