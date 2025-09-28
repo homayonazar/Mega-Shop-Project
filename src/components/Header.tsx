@@ -46,7 +46,7 @@ function Header() {
 
 
     const toggleDarkMode = () => setDarkMode(v => !v);
-
+    // UseStates ...
     const [isOpen, setIsOpen] = useState(false);
     const [isOpen2, setIsOpen2] = useState(false);
     const [isOpenSign, setIsOpenSign] = useState(false)
@@ -91,7 +91,7 @@ function Header() {
 
                             {/* bg Modal blur */}
                             {isOpenSign && (
-                                <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-80" onClick={() => setIsOpenSign(false)}>
+                                <div className="fixed inset-0 bg-black/40 backdrop-blur-xs z-80" onClick={() => setIsOpenSign(false)}>
 
                                 </div>
                             )}
@@ -117,7 +117,7 @@ function Header() {
                                                 </label>
                                                 <button className="mt-7 rounded bg-blue-500 text-white w-1/3 cursor-pointer">Login</button>
                                                 <p className="mt-10 border-t-1 border-gray-400 pt-2"> If you don’t have Account,{" "}
-                                                    <span className="text-blue-800 cursor-pointer" onClick={() => setIsSignUp(true)}>
+                                                    <span className="blue-force cursor-pointer" onClick={() => setIsSignUp(true)}>
                                                         Sign-up
                                                     </span>
                                                 </p>
@@ -136,7 +136,7 @@ function Header() {
                                                 </label>
                                                 <button className="mt-7 rounded bg-green-500 text-white w-1/3 cursor-pointer"> Register </button>
                                                 <p className="mt-10 border-t-1 border-gray-400 pt-2">  Already have an Account?{" "}
-                                                    <span className="text-blue-800 cursor-pointer" onClick={() => setIsSignUp(false)}>Login</span>
+                                                    <span className="blue-force cursor-pointer" onClick={() => setIsSignUp(false)}>Login</span>
                                                 </p>
                                             </>
                                         )}
@@ -233,7 +233,7 @@ function Header() {
                         );
                     })}
                     <div className=" fixed bottom-10 left-1/2 transform -translate-x-1/2">
-                        <Link to="/cart"><button className="p-4 rounded-2xl text-[var(--bg)] bg-[var(--textColor)] text-xl font-bold">Go to CART</button></Link>
+                        <Link to="/cart"><button className="p-4 rounded-2xl text-[var(--bg)] bg-[var(--textColor)] text-xl font-bold cursor-pointer" onClick={() => {setIsOpen2(!isOpen2)}}>Go to CART</button></Link>
                     </div>
                 </div>
             </div>

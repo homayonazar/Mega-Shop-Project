@@ -57,27 +57,22 @@ export default function CompanyForm() {
                         placeholder="Company Name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="p-3 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="p-3 border rounded-md w-full outline-0 border-[var(--text)] text-[var(--text)] "
                     />
                     <input
                         type="email"
-                        placeholder="Email"
+                        placeholder="Email  "
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="p-3 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="p-3 border rounded-md w-full outline-0 border-[var(--text)] text-[var(--text)] "
                     />
                     <input
                         type="tel"
-                        placeholder="Phone Number"
+                        placeholder="Phone Number "
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="p-3 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="p-3 border rounded-md w-full  outline-0 border-[var(--text)] text-[var(--text)]  "
                     />
-                    {/* <input
-                        type="text"
-                        placeholder="Company Address"
-                        className="p-3 border rounded-md w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    /> */}
 
                     <button
                         type="submit"

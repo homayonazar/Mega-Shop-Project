@@ -3,16 +3,21 @@ import Product from "../components/Product"
 import type { IProduct } from "../components/types/Server"
 import { getProducts } from "../components/Services/Api";
 import Container from "../components/Container";
+import Spinner from "../components/Spinner";
 
 function Products() {
 
     // maping pdcts
     const [products, setProducts] = useState<IProduct[]>([]);
     const [sortOption, setSortOption] = useState<string>("");
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        getProducts().then((result) => {
-            setProducts(result.products);
+        setIsLoading(true);
+        setTimeout(() => {
+            getProducts()
+                .then((result) => setProducts(result.products))
+                .finally(() => setIsLoading(false));
         });
     }, []);
 
@@ -111,11 +116,13 @@ function Products() {
                         </div>
                     </div>
                     <div className="productSec sm:w-3/4 w-full">
-                        <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
+                        {isLoading ? (<Spinner />) : (<div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
                             {sortedProducts.map((item) => (
                                 <Product key={item.id} {...item} />
                             ))}
                         </div>
+                        )}
+
                     </div>
                 </div>
             </Container>
