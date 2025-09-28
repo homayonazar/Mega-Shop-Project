@@ -22,6 +22,7 @@ export default function Home() {
         });
     }, []);
 
+    
 
 
 
@@ -137,7 +138,7 @@ export default function Home() {
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
                         {products.slice(4, 8).map((item) => (
-                            <Product {...item} />
+                            <Product key={item.id} {...item} />
                         ))}
                     </div>
                 </div>
@@ -168,7 +169,7 @@ export default function Home() {
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
                         {products.slice(0, 8).map((item) => (
-                            <Product {...item} />
+                            <Product key={item.id} {...item} />
                         ))}
                     </div>
                 </div>
@@ -207,7 +208,7 @@ export default function Home() {
 
                     <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-20">
                         {products.slice(2, 6).map((item) => (
-                            <Product {...item} />
+                            <Product key={item.id} {...item} />
                         ))}
                     </div>
                 </div>
