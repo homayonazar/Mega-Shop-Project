@@ -50,6 +50,8 @@ function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isOpen2, setIsOpen2] = useState(false);
     const [isOpenSign, setIsOpenSign] = useState(false)
+    const [isSignUp, setIsSignUp] = useState(false);
+
 
     return (
         <div className="shadow bg-[var(--bg)]">
@@ -95,25 +97,49 @@ function Header() {
                             )}
                             {/* Modal */}
                             {isOpenSign && (
-                                <div className="openSignModal fixed bg-[var(--myBlue)] border-1 border-gray-500 p-4 w-[450px] h-[300px]
-                                 top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] flex items-center justify-center
-                                 text-white text-xl font-bold rounded-2xl">
-                                    {isOpenSign && (
-                                        <div className="">
-                                            <div className="fixed top-2 left-5 text-3xl rotate-45 " onClick={() => setIsOpenSign(false)}>
-                                                <div className="bg-red-500 w-7 h-8 rotate-45 rounded flex justify-center items-center cursor-pointer">+</div>
-                                            </div>
+                                <div className="openSignModal fixed bg-[var(--myBlue)] border-1 border-gray-500 p-4 w-[450px] h-[350px] top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] flex items-center justify-center text-white text-xl font-bold rounded-2xl">
+                                    <div className="fixed top-2 left-5 text-3xl rotate-45"
+                                        onClick={() => setIsOpenSign(false)}>
+                                        <div className="bg-red-500 w-7 h-8 rotate-45 rounded flex justify-center items-center cursor-pointer">
+                                            +
                                         </div>
-                                    )}
-                                    <div className="information flex flex-col items-center ">
-                                        <label htmlFor="">Username :
-                                            <input type="text" placeholder="Enter Your Username" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 cursor-pointer text-gray-400 text-lg ps-2" />
-                                        </label>
-                                        <label htmlFor="" className=" mt-5">Password :
-                                            <input type="text" placeholder="Enter Your Password" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 cursor-pointer text-gray-400 text-lg ps-2" />
-                                        </label>
-                                        <button className="mt-7 rounded bg-blue-500 text-white w-1/3 cursor-pointer">Login</button>
-                                        <p className="mt-10 border-t-1 border-gray-400 pt-2">If you dont have Account , <Link to="/" className="text-blue-800">Sign-up</Link></p>
+                                    </div>
+                                    <div className="RegisterForm flex flex-col items-center">
+                                        {!isSignUp ? (
+                                            <>
+                                                {/* --- Login FORM --- */}
+                                                <label> Username :
+                                                    <input type="text" placeholder="Enter Your Username" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
+                                                </label>
+
+                                                <label className="mt-5"> Password :
+                                                    <input type="password" placeholder="Enter Your Password" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
+                                                </label>
+                                                <button className="mt-7 rounded bg-blue-500 text-white w-1/3 cursor-pointer">Login</button>
+                                                <p className="mt-10 border-t-1 border-gray-400 pt-2"> If you don’t have Account,{" "}
+                                                    <span className="text-blue-800 cursor-pointer" onClick={() => setIsSignUp(true)}>
+                                                        Sign-up
+                                                    </span>
+                                                </p>
+                                            </>
+                                        ) : (
+                                            <>
+                                                {/* --- Sign-up FORM --- */}
+                                                <label> Full Name :
+                                                    <input type="text" placeholder="Enter Your Full Name" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
+                                                </label>
+                                                <label className="mt-5"> Email :
+                                                    <input type="email" placeholder="Enter Your Email" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
+                                                </label>
+                                                <label className="mt-5"> National ID :
+                                                    <input type="text" placeholder="Enter Your National ID" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
+                                                </label>
+                                                <button className="mt-7 rounded bg-green-500 text-white w-1/3 cursor-pointer"> Register </button>
+                                                <p className="mt-10 border-t-1 border-gray-400 pt-2">  Already have an Account?{" "}
+                                                    <span className="text-blue-800 cursor-pointer" onClick={() => setIsSignUp(false)}>Login</span>
+                                                </p>
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             )}
