@@ -24,7 +24,7 @@ export default function Home() {
             getProducts()
                 .then((result) => setProducts(result.products))
                 .finally(() => setIsLoading(false));
-        }, 4000);
+        });
     }, []);
 
 
