@@ -76,3 +76,6 @@ p ,span , li , i ,h3,label,h2 {
 .black-force {
   color: rgb(0, 0, 0) !important;
 }
+.blue-force {
+  color: rgb(138, 112, 255) !important;
+}

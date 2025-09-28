@@ -10,26 +10,28 @@ import { getProducts } from "../components/Services/Api"
 import tvPic from "../assets/images/tv.webp"
 import type { IProduct } from "../components/types/Server"
 import boxpic1 from "../assets/images/withOutBg/img-prd10.webp"
-
+import Spinner from "../components/Spinner"
 
 export default function Home() {
 
     const [products, setProducts] = useState<IProduct[]>([])
+    const [isLoading, setIsLoading] = useState(false);
+
 
     useEffect(() => {
-        getProducts().then((result) => {
-            setProducts(result.products);
-        });
+        setIsLoading(true);
+        setTimeout(() => {
+            getProducts()
+                .then((result) => setProducts(result.products))
+                .finally(() => setIsLoading(false));
+        }, 4000);
     }, []);
-
-    
 
 
 
 
     return (
         <div className="bg-[var(--bg)]">
-
 
             <Container>
                 <div className="Slide_menu_section flex flex-row gap-6 pt-10">
@@ -133,14 +135,20 @@ export default function Home() {
                 <div className="DealOfDay mt-10">
                     <div className="textofDeal p-4 border-b border-gray-200">
                         <i className="fa-solid fa-fire red-force text-3xl"></i>
-                        <p className="red-force inline text-2xl"><u> Today's Discount</u></p>
+                        <p className="red-force inline text-2xl">
+                            <u> Today's Discount</u>
+                        </p>
                     </div>
 
-                    <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                        {products.slice(4, 8).map((item) => (
-                            <Product key={item.id} {...item} />
-                        ))}
-                    </div>
+                    {isLoading ? (
+                        <Spinner />
+                    ) : (
+                        <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+                            {products.slice(4, 8).map((item) => (
+                                <Product key={item.id} {...item} />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </Container>
 
@@ -167,11 +175,14 @@ export default function Home() {
                         <p className="red-force inline text-2xl"><u> Today's Discount</u></p>
                     </div>
 
-                    <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+
+                    {isLoading ? (<Spinner />) : (<div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
                         {products.slice(0, 8).map((item) => (
                             <Product key={item.id} {...item} />
                         ))}
-                    </div>
+                    </div>)}
+
+
                 </div>
 
                 <div className="prdctBoxes w-full h-80 flex">
@@ -200,17 +211,17 @@ export default function Home() {
                         </div></div>
                 </div>
 
-                <div className="DealOfDay mt-10">
+                <div className="DealOfDay mt-10 mb-5">
                     <div className="textofDeal p-4 border-b border-gray-200">
                         <i className="fa-solid fa-fire red-force text-3xl"></i>
                         <p className="red-force inline text-2xl">Top Seller This Week</p>
                     </div>
-
-                    <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-20">
+                    {isLoading ? (<Spinner />) : (<div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-20">
                         {products.slice(2, 6).map((item) => (
                             <Product key={item.id} {...item} />
                         ))}
-                    </div>
+                    </div>)}
+
                 </div>
 
 
