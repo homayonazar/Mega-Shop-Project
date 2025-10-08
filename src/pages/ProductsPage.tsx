@@ -77,7 +77,7 @@ export default function ProductsPage() {
                         <div className="flex justify-between w-full mt-5">
                             {getProductQty(parseInt(param.id as string)) === 0 ? (
                                 <button
-                                    className="py-3 bg-[var(--myFontColor)] w-full rounded cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                                    className="py-3 bg-[var(--skin)] w-full rounded cursor-pointer transition-transform hover:scale-105 active:scale-95"
                                     onClick={() => handleIncreaseProductQty(parseInt(param.id as string))}
                                 >
                                     Add To Cart
@@ -86,7 +86,7 @@ export default function ProductsPage() {
                                 <div className="flex flex-col w-full gap-2">
                                     <div className="flex flex-row gap-2">
                                         <button
-                                            className="flex-1 py-3 bg-[var(--myFontColor)] rounded text-xl transition-transform hover:scale-105 active:scale-95"
+                                            className="flex-1 py-3 bg-[var(--skin)] rounded text-xl transition-transform hover:scale-105 active:scale-95"
                                             onClick={() => handleIncreaseProductQty(parseInt(param.id as string))}
                                         >
                                             +
@@ -95,14 +95,14 @@ export default function ProductsPage() {
                                             {getProductQty(parseInt(param.id as string))}
                                         </span>
                                         <button
-                                            className="flex-1 py-3 bg-[var(--myFontColor)] rounded text-xl transition-transform hover:scale-105 active:scale-95"
+                                            className="flex-1 py-3 bg-[var(--skin)] rounded text-xl transition-transform hover:scale-105 active:scale-95"
                                             onClick={() => handleDecreaseProductQty(parseInt(param.id as string))}
                                         >
                                             -
                                         </button>
                                     </div>
                                     <button
-                                        className="py-3 bg-[var(--myFontColor)] w-full rounded cursor-pointer mt-2 transition-transform hover:scale-105 active:scale-95"
+                                        className="py-3 bg-[var(--skin)] w-full rounded cursor-pointer mt-2 transition-transform hover:scale-105 active:scale-95"
                                         onClick={() => handleRemoveProduct(parseInt(param.id as string))}
                                     >
                                         Delete From Cart

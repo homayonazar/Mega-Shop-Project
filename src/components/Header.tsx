@@ -52,6 +52,12 @@ function Header() {
     const [isOpenSign, setIsOpenSign] = useState(false)
     const [isSignUp, setIsSignUp] = useState(false);
 
+    useEffect(() => {
+        const savedSkin = localStorage.getItem("skinColor");
+        if (savedSkin) {
+            document.documentElement.style.setProperty("--skin", savedSkin);
+        }
+    }, []);
 
     return (
         <div className="shadow bg-[var(--bg)]">
@@ -76,11 +82,27 @@ function Header() {
                             )}
                         </button>
 
-                        <button className="flex items-center gap-2 cursor-pointer">
-                            <i className="fas fa-light fa-language "></i>
-                            <span>Language:</span>
-                            <span className="font-semibold">English</span>
-                        </button>
+                        <div className="colors flex flex-row gap-1">
+                            {[
+                                { name: "green", color: "#22c55e" },
+                                { name: "red", color: "#ef4444" },
+                                { name: "blue", color: "#3b82f6" },
+                                { name: "orange", color: "#fb923c" },
+                                { name: "yellow", color: "#facc15" },
+                                { name: "pink", color: "#f472b6" },
+                            ].map((clr) => (
+                                <div
+                                    key={clr.name}
+                                    onClick={() => {
+                                        document.documentElement.style.setProperty("--skin", clr.color);
+                                        localStorage.setItem("skinColor", clr.color);
+                                    }}
+                                    className={`rounded-full p-[10px] transition-transform duration-300 hover:scale-115 cursor-pointer`}
+                                    style={{ backgroundColor: clr.color }}
+                                    title={clr.name}
+                                ></div>
+                            ))}
+                        </div>
 
                         <div className="Sign-in">
                             {/* Button sign-in*/}
@@ -233,7 +255,7 @@ function Header() {
                         );
                     })}
                     <div className=" fixed bottom-10 left-1/2 transform -translate-x-1/2">
-                        <Link to="/cart"><button className="p-4 rounded-2xl text-[var(--bg)] bg-[var(--textColor)] text-xl font-bold cursor-pointer" onClick={() => {setIsOpen2(!isOpen2)}}>Go to CART</button></Link>
+                        <Link to="/cart"><button className="p-4 rounded-2xl text-[var(--bg)] bg-[var(--textColor)] text-xl font-bold cursor-pointer" onClick={() => { setIsOpen2(!isOpen2) }}>Go to CART</button></Link>
                     </div>
                 </div>
             </div>
