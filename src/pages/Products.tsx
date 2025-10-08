@@ -115,7 +115,7 @@ function Products() {
                             </label>
                         </div>
                     </div>
-                    <div className="productSec sm:w-3/4 w-full">
+                    <div className="productSec w-full ">
                         {isLoading ? (<Spinner />) : (<div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
                             {sortedProducts.map((item) => (
                                 <Product key={item.id} {...item} />

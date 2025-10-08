@@ -33,14 +33,14 @@ export default function ProductsPage() {
         <div className="bg-[var(--bg)]">
 
             <Container>
-                <div className="HomePage_product w-full flex flex-row border-b-1 border-gray-200">
-                    <div className="galleryOfProduct w-1/2 h-auto m-10">
+                <div className="HomePage_product w-full flex flex-col justify-center items-center p-6 sm:p-1 sm:flex-row border-b-1 border-gray-200 ">
+                    <div className="galleryOfProduct w-full sm:w-1/2 h-auto m-10">
                         <div className="img1 flex justify-center mt-10">
                             <img src={product?.imageUrl} alt="" />
                         </div>
                     </div>
 
-                    <div className="detailOfProduct w-1/2 h-auto m-10">
+                    <div className="detailOfProduct w-full sm:w-1/2 h-auto m-10">
                         <h1 className="text-3xl text-[var(--text)]">{product?.ModelName}</h1>
                         <p className="border-b-1 border-gray-200 py-5 ">
                             Price is: <span className="red-force text-2xl text-[var(--text)]">{product?.price} $</span>
@@ -118,7 +118,7 @@ export default function ProductsPage() {
                     </div>
                 </div>
 
-                <div className="relatedPdct w-full h-250 bg-amber-100 mt-10"></div>
+                {/* <div className="relatedPdct w-full h-250 bg-amber-100 mt-10"></div> */}
             </Container>
 
 
