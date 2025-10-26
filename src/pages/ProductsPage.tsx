@@ -81,7 +81,7 @@ export default function ProductsPage() {
                         <div className="flex justify-between w-full mt-5">
                             {getProductQty(parseInt(param.id as string)) === 0 ? (
                                 <button
-                                    className="py-3 bg-[var(--myFontColor)] w-full rounded cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                                    className="py-3 bg-[var(--myFontColor)] w-full rounded-3xl cursor-pointer text-white font-bold transition-transform hover:scale-105 active:scale-95"
                                     onClick={() => handleIncreaseProductQty(parseInt(param.id as string))}
                                 >
                                     Add To Cart
@@ -90,16 +90,16 @@ export default function ProductsPage() {
                                 <div className="flex flex-col w-full gap-2">
                                     <div className="flex flex-row gap-2">
                                         <button
-                                            className="flex-1 py-3 bg-[var(--myFontColor)] rounded text-xl transition-transform hover:scale-105 active:scale-95"
+                                            className="flex-1 py-3 bg-[var(--myFontColor)] rounded text-xl cursor-pointer transition-transform hover:scale-105 active:scale-95"
                                             onClick={() => handleIncreaseProductQty(parseInt(param.id as string))}
                                         >
                                             +
                                         </button>
-                                        <span className="flex-1 flex items-center justify-center font-bold text-lg transition-transform hover:scale-105 active:scale-95">
-                                            {getProductQty(parseInt(param.id as string))}
+                                        <span className="flex-1 flex items-center justify-center bg-[var(--myBlue)] rounded-4xl font-bold text-lg transition-transform hover:scale-105 active:scale-95">
+                                            <p className="w-10 h-10 bg-white rounded-full flex items-center justify-center black-force">{getProductQty(parseInt(param.id as string))}</p>
                                         </span>
                                         <button
-                                            className="flex-1 py-3 bg-[var(--myFontColor)] rounded text-xl transition-transform hover:scale-105 active:scale-95"
+                                            className="flex-1 py-3 bg-[var(--myFontColor)] rounded text-xl cursor-pointer transition-transform hover:scale-105 active:scale-95"
                                             onClick={() => handleDecreaseProductQty(parseInt(param.id as string))}
                                         >
                                             -
@@ -168,7 +168,24 @@ export default function ProductsPage() {
                             Send
                         </button>
                     </div>
-                    
+                    <div className="commentslists px-5">
+                        <div className="commentslist flex flex-col justify-center items-center gap-5">
+                            <div className="comment1 w-full h-20 bg-amber-200 rounded-md ">
+                                <div className="coment w-full flex flex-row">
+                                    <div className="avatar w-1/12 bg-amber-600">avatar</div>
+                                    <div className="textSec w-11/12 bg-amber-700">text</div>
+                                </div>
+                            </div>
+                            <div className="commnt2 w-full h-20 bg-amber-200 rounded-md "></div>
+                            <div className="commnt3 w-full h-20 bg-amber-200 rounded-md "></div>
+                            <div className="commnt4 w-full h-20 bg-amber-200 rounded-md "></div>
+                            <div className="commnt5 w-full h-20 bg-amber-200 rounded-md "></div>
+                            <div className="commnt6 w-full h-20 bg-amber-200 rounded-md "></div>
+
+
+                        </div>
+                    </div>
+
                 </div>
                 <div className="coments">
 
