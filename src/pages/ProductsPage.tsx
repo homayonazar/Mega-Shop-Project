@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import type { IProduct } from "../components/types/Server";
 import { useShppingCartContext } from "../components/contexts/ShppingCartContext";
 import { getProduct } from "../components/Services/Api";
+import avatar from "../assets/images/avatar.png"
 import Products from "./Products";
 import Product from "../components/Product";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 export default function ProductsPage() {
 
     const param = useParams<{ id: string }>();
@@ -130,7 +132,7 @@ export default function ProductsPage() {
                     </div>
                 </div> */}
 
-                <div className="relatedPdct w-full h-250 border-1 border-gray-300 bg-gray-50 p-8 rounded-2xl mt-5">
+                <div className="relatedPdct w-full h-auto border-1 border-gray-300 bg-gray-50 p-8 rounded-2xl mt-5">
                     <div className="createComment h-auto pb-10 w-full  rounded-2xl px-5">
                         <h2 className="text-center text-2xl font-thin text-[var(--text)]">Create a comment</h2>
 
@@ -168,19 +170,129 @@ export default function ProductsPage() {
                             Send
                         </button>
                     </div>
+                    {/* comments */}
                     <div className="commentslists px-5">
                         <div className="commentslist flex flex-col justify-center items-center gap-5">
-                            <div className="comment1 w-full h-20 bg-amber-200 rounded-md ">
-                                <div className="coment w-full flex flex-row">
-                                    <div className="avatar w-1/12 bg-amber-600">avatar</div>
-                                    <div className="textSec w-11/12 bg-amber-700">text</div>
+                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
+                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
+                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                                        <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
+                                    </div>
+                                    <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
+                                        <div className="userDetail flex flex-row justify-between pe-10">
+                                            <div className="left flex flex-row gap-10">
+                                                <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
+                                                <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
+                                            </div>
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                        </div>
+                                        <div className="commentText pb-2">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
+                                            consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="commnt2 w-full h-20 bg-amber-200 rounded-md "></div>
-                            <div className="commnt3 w-full h-20 bg-amber-200 rounded-md "></div>
-                            <div className="commnt4 w-full h-20 bg-amber-200 rounded-md "></div>
-                            <div className="commnt5 w-full h-20 bg-amber-200 rounded-md "></div>
-                            <div className="commnt6 w-full h-20 bg-amber-200 rounded-md "></div>
+                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
+                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
+                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                                        <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
+                                    </div>
+                                    <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
+                                        <div className="userDetail flex flex-row justify-between pe-10">
+                                            <div className="left flex flex-row gap-10">
+                                                <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
+                                                <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
+                                            </div>
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                        </div>
+                                        <div className="commentText pb-2">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
+                                            consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
+                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
+                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                                        <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
+                                    </div>
+                                    <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
+                                        <div className="userDetail flex flex-row justify-between pe-10">
+                                            <div className="left flex flex-row gap-10">
+                                                <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
+                                                <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
+                                            </div>
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                        </div>
+                                        <div className="commentText pb-2">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
+                                            consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
+                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
+                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                                        <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
+                                    </div>
+                                    <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
+                                        <div className="userDetail flex flex-row justify-between pe-10">
+                                            <div className="left flex flex-row gap-10">
+                                                <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
+                                                <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
+                                            </div>
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                        </div>
+                                        <div className="commentText pb-2">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
+                                            consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
+                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
+                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                                        <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
+                                    </div>
+                                    <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
+                                        <div className="userDetail flex flex-row justify-between pe-10">
+                                            <div className="left flex flex-row gap-10">
+                                                <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
+                                                <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
+                                            </div>
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                        </div>
+                                        <div className="commentText pb-2">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
+                                            consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
+                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
+                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                                        <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
+                                    </div>
+                                    <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
+                                        <div className="userDetail flex flex-row justify-between pe-10">
+                                            <div className="left flex flex-row gap-10">
+                                                <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
+                                                <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
+                                            </div>
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                        </div>
+                                        <div className="commentText pb-2">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
+                                            consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
                         </div>
