@@ -3,12 +3,13 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { IProduct } from "../components/types/Server";
 import { useShppingCartContext } from "../components/contexts/ShppingCartContext";
-import { getProduct } from "../components/Services/Api";
+import { getProduct, getProducts } from "../components/Services/Api";
 import avatar from "../assets/images/avatar.png"
-import Products from "./Products";
+// import Products from "./Products";
 import Product from "../components/Product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import Spinner from "../components/Spinner";
 export default function ProductsPage() {
 
     const param = useParams<{ id: string }>();
@@ -25,6 +26,20 @@ export default function ProductsPage() {
         });
     }, []);
 
+
+    const [products, setProducts] = useState<IProduct[]>([])
+        const [isLoading, setIsLoading] = useState(false);
+    
+    
+        useEffect(() => {
+            setIsLoading(true);
+            setTimeout(() => {
+                getProducts()
+                    .then((result) => setProducts(result.products))
+                    .finally(() => setIsLoading(false));
+            },500 );
+            // Use number 500 above -> to make fake delay from pulling data from API
+        }, []);
 
 
 
@@ -124,13 +139,23 @@ export default function ProductsPage() {
                     </div>
                 </div>
 
-                {/* <div className="relatedProducts">
-                    <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                        {Products.slice(0, 4).map((item) => (
-                            <Product key={item.id} {...item} />
-                        ))}
+                <div className="DealOfDay mt-10">
+                    <div className="textofDeal p-4 border-b border-gray-200">
+                        <p className="red-force text-2xl">
+                            <p className="red-force"> Related Products</p>
+                        </p>
                     </div>
-                </div> */}
+
+                    {isLoading ? (
+                        <Spinner />
+                    ) : (
+                        <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+                            {products.slice(4, 8).map((item) => (
+                                <Product key={item.id} {...item} />
+                            ))}
+                        </div>
+                    )}
+                </div>
 
                 <div className="relatedPdct w-full h-auto border-1 border-gray-300 bg-gray-50 p-8 rounded-2xl mt-5">
                     <div className="createComment h-auto pb-10 w-full  rounded-2xl">
@@ -305,7 +330,7 @@ export default function ProductsPage() {
                     </div>
 
                 </div>
-                
+
             </Container>
 
 
