@@ -133,7 +133,7 @@ export default function ProductsPage() {
                 </div> */}
 
                 <div className="relatedPdct w-full h-auto border-1 border-gray-300 bg-gray-50 p-8 rounded-2xl mt-5">
-                    <div className="createComment h-auto pb-10 w-full  rounded-2xl px-5">
+                    <div className="createComment h-auto pb-10 w-full  rounded-2xl">
                         <h2 className="text-center text-2xl font-thin text-[var(--text)]">Create a comment</h2>
 
                         <div className="r1 flex flex-row gap-5">
@@ -171,11 +171,11 @@ export default function ProductsPage() {
                         </button>
                     </div>
                     {/* comments */}
-                    <div className="commentslists px-5">
+                    <div className="commentslists">
                         <div className="commentslist flex flex-col justify-center items-center gap-5">
-                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
-                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
-                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                            <div className="comment1 w-full h-auto bg-gray-200 rounded-md border-1 border-gray-300">
+                                <div className="coment w-full flex flex-row  ">
+                                    <div className="avatar w-22 h-20 flex justify-center">
                                         <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
                                     </div>
                                     <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
@@ -184,18 +184,19 @@ export default function ProductsPage() {
                                                 <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
                                                 <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
                                             </div>
-                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500 mb-3 hover:scale-110 active:scale-100" icon={faThumbsUp} />
                                         </div>
-                                        <div className="commentText pb-2">
+                                        <div className="commentText pb-2 font-thin">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
                                             consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
                                         </div>
+                                        {/* WROK ON ROUNDED CORNER */}
                                     </div>
                                 </div>
                             </div>
-                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
-                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
-                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                            <div className="comment1 w-full h-auto bg-gray-200 rounded-md border-1 border-gray-300">
+                                <div className="coment w-full flex flex-row  ">
+                                    <div className="avatar w-22 h-20 flex justify-center">
                                         <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
                                     </div>
                                     <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
@@ -204,18 +205,19 @@ export default function ProductsPage() {
                                                 <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
                                                 <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
                                             </div>
-                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500 mb-3 hover:scale-110 active:scale-100" icon={faThumbsUp} />
                                         </div>
-                                        <div className="commentText pb-2">
+                                        <div className="commentText pb-2 font-thin">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
                                             consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
                                         </div>
+                                        {/* WROK ON ROUNDED CORNER */}
                                     </div>
                                 </div>
                             </div>
-                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
-                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
-                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                            <div className="comment1 w-full h-auto bg-gray-200 rounded-md border-1 border-gray-300">
+                                <div className="coment w-full flex flex-row  ">
+                                    <div className="avatar w-22 h-20 flex justify-center">
                                         <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
                                     </div>
                                     <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
@@ -224,18 +226,19 @@ export default function ProductsPage() {
                                                 <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
                                                 <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
                                             </div>
-                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500 mb-3 hover:scale-110 active:scale-100" icon={faThumbsUp} />
                                         </div>
-                                        <div className="commentText pb-2">
+                                        <div className="commentText pb-2 font-thin">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
                                             consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
                                         </div>
+                                        {/* WROK ON ROUNDED CORNER */}
                                     </div>
                                 </div>
                             </div>
-                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
-                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
-                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                            <div className="comment1 w-full h-auto bg-gray-200 rounded-md border-1 border-gray-300">
+                                <div className="coment w-full flex flex-row  ">
+                                    <div className="avatar w-22 h-20 flex justify-center">
                                         <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
                                     </div>
                                     <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
@@ -244,18 +247,19 @@ export default function ProductsPage() {
                                                 <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
                                                 <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
                                             </div>
-                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500 mb-3 hover:scale-110 active:scale-100" icon={faThumbsUp} />
                                         </div>
-                                        <div className="commentText pb-2">
+                                        <div className="commentText pb-2 font-thin">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
                                             consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
                                         </div>
+                                        {/* WROK ON ROUNDED CORNER */}
                                     </div>
                                 </div>
                             </div>
-                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
-                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
-                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                            <div className="comment1 w-full h-auto bg-gray-200 rounded-md border-1 border-gray-300">
+                                <div className="coment w-full flex flex-row  ">
+                                    <div className="avatar w-22 h-20 flex justify-center">
                                         <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
                                     </div>
                                     <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
@@ -264,18 +268,19 @@ export default function ProductsPage() {
                                                 <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
                                                 <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
                                             </div>
-                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500 mb-3 hover:scale-110 active:scale-100" icon={faThumbsUp} />
                                         </div>
-                                        <div className="commentText pb-2">
+                                        <div className="commentText pb-2 font-thin">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
                                             consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
                                         </div>
+                                        {/* WROK ON ROUNDED CORNER */}
                                     </div>
                                 </div>
                             </div>
-                            <div className="comment1 w-full h-22 bg-gray-200 rounded-md ">
-                                <div className="coment w-full flex flex-row  border-1 border-gray-300">
-                                    <div className="avatar w-1/12 h-20 flex justify-center">
+                            <div className="comment1 w-full h-auto bg-gray-200 rounded-md border-1 border-gray-300">
+                                <div className="coment w-full flex flex-row  ">
+                                    <div className="avatar w-22 h-20 flex justify-center">
                                         <img src={avatar} alt="avatar" className="w-22 h-22 p-2" />
                                     </div>
                                     <div className="textSec w-11/12 ps-15 pt-2 flex flex-col ">
@@ -284,12 +289,13 @@ export default function ProductsPage() {
                                                 <p className="font-bold">Name : <span className="font-thin"> 11111111</span></p>
                                                 <p className="font-bold">Commented Date : <span className="font-thin">2012/12/12</span></p>
                                             </div>
-                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500" icon={faThumbsUp} />
+                                            <FontAwesomeIcon className="p-1 cursor-pointer rounded-full bg-amber-500 mb-3 hover:scale-110 active:scale-100" icon={faThumbsUp} />
                                         </div>
-                                        <div className="commentText pb-2">
+                                        <div className="commentText pb-2 font-thin">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem quam similique a laboriosam, amet corporis,
                                             consequatur eveniet consectetur ipsam sint , dignissimos ipsa sequi commodi? In dolores harum fuga eum!
                                         </div>
+                                        {/* WROK ON ROUNDED CORNER */}
                                     </div>
                                 </div>
                             </div>
@@ -299,9 +305,7 @@ export default function ProductsPage() {
                     </div>
 
                 </div>
-                <div className="coments">
-
-                </div>
+                
             </Container>
 
 
