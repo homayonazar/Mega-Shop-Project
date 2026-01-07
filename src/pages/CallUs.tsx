@@ -12,25 +12,28 @@ export default function CompanyForm() {
         e.preventDefault();
 
         if (!name || !email || !phone) {
-            alert("Please fill all fields!");
+            setError("Please fill all fields!");
             return;
         }
 
         try {
-            const response = await fetch("https://homayonazar.com/api/new_api/callForm/index.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-API-KEY": "MySuperSecretKey123"
-                },
-                body: JSON.stringify({ name, email, phone })
-            });
+            const response = await fetch(
+                "https://homayonazar.com/api/new_api/callForm/index.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ name, email, phone })
+                }
+            );
 
             const result = await response.json();
 
-            if (result.status === "success") {
+            if (response.ok && result.status === "success") {
                 setSubmitted(true);
                 setTimeout(() => setSubmitted(false), 3000);
+
                 setName("");
                 setEmail("");
                 setPhone("");
@@ -40,7 +43,7 @@ export default function CompanyForm() {
             }
         } catch (err) {
             console.error(err);
-            setError("Something went wrong!");
+            setError("Network error. Please try again.");
         }
     };
 
@@ -49,49 +52,21 @@ export default function CompanyForm() {
             <p className="text-4xl text-center font-bold mt-10">Contact Us</p>
             <Container>
                 <form
-                    onSubmit={handleSubmit}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10"
-                >
-                    <input
-                        type="text"
-                        placeholder="Company Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="p-3 border rounded-md w-full outline-0 border-[var(--text)] text-[var(--text)] "
-                    />
-                    <input
-                        type="email"
-                        placeholder="Email  "
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="p-3 border rounded-md w-full outline-0 border-[var(--text)] text-[var(--text)] "
-                    />
-                    <input
-                        type="tel"
-                        placeholder="Phone Number "
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="p-3 border rounded-md w-full  outline-0 border-[var(--text)] text-[var(--text)]  "
-                    />
+                    onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10" >
+                    <input type="text" placeholder="Company Name" value={name} onChange={(e) => setName(e.target.value)}
+                        className="p-3 border rounded-md w-full outline-0 border-[var(--text)] text-[var(--text)] " />
+                    <input type="email" placeholder="Email  " value={email} onChange={(e) => setEmail(e.target.value)}
+                        className="p-3 border rounded-md w-full outline-0 border-[var(--text)] text-[var(--text)] " />
+                    <input type="tel" placeholder="Phone Number " value={phone} onChange={(e) => setPhone(e.target.value)}
+                        className="p-3 border rounded-md w-full  outline-0 border-[var(--text)] text-[var(--text)]  " />
 
-                    <button
-                        type="submit"
-                        className="bg-blue-500 text-white font-semibold py-3 rounded-md hover:bg-blue-600 transition "
-                    >
+                    <button type="submit" className="bg-blue-500 text-white font-semibold py-3 rounded-md hover:bg-blue-600 transition ">
                         Submit
                     </button>
 
-                    {submitted && (
-                        <p className="text-green-600 font-semibold text-center mt-2 col-span-1 md:col-span-2">
-                            Form submitted successfully!
-                        </p>
-                    )}
+                    {submitted && (<p className="text-green-600 font-semibold text-center mt-2 col-span-1 md:col-span-2"> Form submitted successfully! </p>)}
 
-                    {error && (
-                        <p className="text-red-600 font-semibold text-center mt-2 col-span-1 md:col-span-2">
-                            {error}
-                        </p>
-                    )}
+                    {error && (<p className="text-red-600 font-semibold text-center mt-2 col-span-1 md:col-span-2"> {error} </p>)}
                 </form>
             </Container>
         </div>
