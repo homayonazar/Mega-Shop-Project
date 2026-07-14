@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface ShoppingCartProviderProps {
@@ -16,11 +17,9 @@ interface ShppingCartContextType {
     getProductQty: (id: number) => number;
     handleRemoveProduct: (id: number) => void;
     cartQty: number;
-
 }
 
-
-export function useLocalStorage<T>(key: string, initialValue: T) {
+function useLocalStorage<T>(key: string, initialValue: T) {
   const [value, setValue] = useState<T>(() => {
     try {
       const localValue = localStorage.getItem(key);
@@ -29,7 +28,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       } else {
         return initialValue;
       }
-    } catch (error) {
+    } catch {
       console.warn(`Invalid JSON in localStorage for key "${key}"`);
       return initialValue;
     }
@@ -42,7 +41,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   return [value, setValue] as [typeof value, typeof setValue];
 }
 
-export const ShppingCartContext = createContext({} as ShppingCartContextType);
+const ShppingCartContext = createContext({} as ShppingCartContextType);
 
 export const useShppingCartContext = () => useContext(ShppingCartContext);
 

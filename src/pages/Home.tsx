@@ -1,242 +1,264 @@
-import Container from "../components/Container"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { getProducts } from "../components/Services/Api"
+import type { IProduct } from "../components/types/Server"
+
+// کامپوننت‌ها
+import Container from "../components/Container"
+import Product from "../components/Product"
+import Spinner from "../components/Spinner"
+
+// تصاویر
 import imageMiddle from "../assets/images/middleImage.jpg"
 import middleimagePhoto from "../assets/images/img-prd9.webp"
 import img1Right from "../assets/images/img1Right.png"
 import img2Right from "../assets/images/img2Right.png"
-import Product from "../components/Product"
-import { useEffect, useState } from "react"
-import { getProducts } from "../components/Services/Api"
 import tvPic from "../assets/images/tv.webp"
-import type { IProduct } from "../components/types/Server"
 import boxpic1 from "../assets/images/withOutBg/img-prd10.webp"
-import Spinner from "../components/Spinner"
 
 export default function Home() {
-
     const [products, setProducts] = useState<IProduct[]>([])
-    const [isLoading, setIsLoading] = useState(false);
-
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        setIsLoading(true);
-        setTimeout(() => {
-            getProducts()
-                .then((result) => setProducts(result.products))
-                .finally(() => setIsLoading(false));
-        });
-    }, []);
-
-
-
+        setIsLoading(true)
+        getProducts()
+            .then((result) => setProducts(result.products))
+            .finally(() => setIsLoading(false))
+    }, [])
 
     return (
-        <div className="bg-[var(--bg)]">
-
+        <div className="transition-colors duration-300">
             <Container>
-                <div className="Slide_menu_section flex flex-row gap-6 pt-10">
-                    <div className="sideMenu w-1/5 bg-[var(--bg)] hidden lg:block  h-auto border-1 border-gray-200 rounded-2xl ">
-                        <div className="allDepartment bg-[#ed3b3b] p-4.5 rounded-t-2xl">
-                            <i className="fa-solid fa-bars white-force me-2 text-xl"></i><p className="inline text-lg text-white white-force">All Department</p>
+                {/* Hero Section */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8 pb-16 items-stretch">
+                    
+                    {/* Sidebar Categories */}
+                    <div className="hidden lg:block lg:col-span-3 border rounded-3xl p-6 shadow-sm" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
+                        <div className="flex items-center gap-2 pb-4 mb-4 border-b" style={{ borderColor: 'var(--card-border)' }}>
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                            <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-400">Categories</h3>
                         </div>
-                        <nav>
-                            <ul>
-                                <Link to="/"><li className="p-3 border-b-1 border-gray-200">Audio Equipments</li></Link>
-                                <Link to="/"><li className="p-3 border-b-1 border-gray-200">Laptop & Tablet</li></Link>
-                                <Link to="/"><li className="p-3 border-b-1 border-gray-200">Gaming Accessories</li></Link>
-                                <Link to="/"><li className="p-3 border-b-1 border-gray-200">Headphone</li></Link>
-                                <Link to="/"><li className="p-3 border-b-1 border-gray-200">Smartphone</li></Link>
-                                <Link to="/"><li className="p-3 border-b-1 border-gray-200">Camera & Video</li></Link>
-                                <Link to="/"><li className="p-3 border-b-1 border-gray-200">Smartwatch</li></Link>
-                                <Link to="/"><li className="p-3 border-b-1 border-gray-200">Storage & Digital Devices</li></Link>
-                                <Link to="/"><li className="p-3 border-gray-200">Game & Room Furniture</li></Link>
-                                {/* <Link to="/"><li className="p-3 border-b-1 border-gray-200">Server & Workstation</li></Link> */}
-                                {/* <Link to="/"><li className="p-3 border-b-1 border-gray-200">TV & Computer Screen</li></Link> */}
-                            </ul>
+                        <nav className="flex flex-col gap-1">
+                            {[
+                                "Audio Equipments", "Laptop & Tablet", "Gaming Accessories", 
+                                "Headphone", "Smartphone", "Camera & Video", "Smartwatch"
+                            ].map((cat, idx) => (
+                                <Link 
+                                    key={idx} 
+                                    to="/products" 
+                                    className="px-3 py-2.5 rounded-xl text-zinc-500 hover:text-[var(--text)] hover:bg-zinc-100/50 dark:hover:bg-zinc-800/40 transition-all text-sm font-medium flex items-center justify-between group"
+                                >
+                                    {cat}
+                                    <i className="fa-solid fa-chevron-right text-[10px] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                                </Link>
+                            ))}
                         </nav>
                     </div>
-                    <div className="middlegalery w-3/5 h-auto relative hidden sm:block ">
-                        <div className="middleImage absolute inset-0 rounded-2xl z-10">
-                            <img src={imageMiddle} alt="middleImage" className="w-full h-full object-cover rounded-2xl" />
-                            <div className="texts z-20 absolute top-10 left-10">
-                                <h2 className="text-white text-7xl mb-10 white-force">The new <br />standard TV </h2>
-                                <p className="yello-force text-5xl p-5">$287 </p>
-                                <button className="text-white text-lg cursor-pointer mt-10">Shop Now</button>
+
+                    {/* Main Hero Slider Area */}
+                    <div className="lg:col-span-6 relative rounded-3xl overflow-hidden group min-h-[460px] flex items-center p-8 md:p-12 border shadow-sm" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
+                        <div className="absolute inset-0 bg-gradient-to-r from-[var(--card-bg)] via-[var(--card-bg)]/95 to-transparent z-10" />
+                        <img 
+                            src={imageMiddle} 
+                            alt="" 
+                            className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-105 transition-transform duration-700 ease-out" 
+                        />
+                        
+                        <div className="relative z-20 max-w-sm md:max-w-md space-y-6">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold tracking-wide" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }}>
+                                ✨ Latest Generation
+                            </span>
+                            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+                                The New Standard <br />
+                                <span className="opacity-50 font-light">Smart Television</span>
+                            </h1>
+                            <div className="flex items-baseline gap-2">
+                                <span className="text-3xl font-bold">$287.00</span>
+                                <span className="text-sm text-zinc-400 line-through">$399.00</span>
                             </div>
+                            <Link 
+                                to="/products" 
+                                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold px-8 py-4 rounded-xl shadow-md transition-all active:scale-95"
+                                style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)' }}
+                            >
+                                Shop Now
+                                <i className="fa-solid fa-arrow-right text-[10px]"></i>
+                            </Link>
                         </div>
-
-                        <div className="middleimagePhoto absolute z-20 top-45 right-5 transform transition duration-300 ease-in-out hover:scale-105">
-                            <img src={middleimagePhoto} alt="" className="w-80  h-auto object-contain" />
-                        </div>
+                        
+                        <img 
+                            src={middleimagePhoto} 
+                            alt="" 
+                            className="absolute right-6 bottom-6 w-60 h-auto object-contain hidden md:block z-20 drop-shadow-xl pointer-events-none group-hover:translate-y-[-6px] transition-transform duration-500" 
+                        />
                     </div>
-                    <div className="rightGalery w-1.9/5  h-auto ">
-                        <div className="img 1">
-                            <Link to="/"><img className=" p-2 rounded-2xl" src={img1Right} alt="" /></Link>
-                        </div>
-                        <div className="img2">
-                            <Link to="/"><img className=" p-2 rounded-2xl" src={img2Right} alt="" /></Link>
-                        </div>
+
+                    {/* Promo Mini Cards */}
+                    <div className="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col gap-6">
+                        <Link 
+                            to="/products" 
+                            className="flex-1 relative overflow-hidden rounded-3xl group border shadow-sm"
+                            style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}
+                        >
+                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={img1Right} alt="" />
+                        </Link>
+                        <Link 
+                            to="/products" 
+                            className="flex-1 relative overflow-hidden rounded-3xl group border shadow-sm"
+                            style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}
+                        >
+                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={img2Right} alt="" />
+                        </Link>
                     </div>
 
                 </div>
+            </Container>
 
-                <div className="2nd_section grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 p-4 mb-20">
-                    <div className="box1 w-full h-27 border border-gray-200 rounded-2xl  flex flex-row items-center">
-                        <div className="icon m-4 text-xl text-blue-500">
-                            <i className="fas fa-truck "></i>
-                        </div>
-                        <div className="textBox">
-                            <p className="font-bold m-1 ">Free delivery</p>
-                            <p className="text-sm text-gray-600 ">Free Shipping for orders over $20</p>
-                        </div>
+            {/* Key Features Banner */}
+            <div className="border-y py-10 my-12" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
+                <Container>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                        {[
+                            { icon: "fa-truck-fast", title: "Free Delivery", desc: "For orders over $20" },
+                            { icon: "fa-headset", title: "Premium Support", desc: "24/7 dedicated assistance" },
+                            { icon: "fa-credit-card", title: "Flexible Payment", desc: "Secure multiple methods" },
+                            { icon: "fa-shield-halved", title: "Certified Reliable", desc: "Trusted by 2000+ brands" },
+                            { icon: "fa-rotate-left", title: "Easy Return", desc: "30-day exchange window" }
+                        ].map((item, idx) => (
+                            <div 
+                                key={idx} 
+                                className="p-5 rounded-2xl border flex flex-col items-center lg:items-start text-center lg:text-left hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors duration-300"
+                                style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}
+                            >
+                                <div className="p-3 rounded-xl mb-4 text-base shadow-sm" style={{ backgroundColor: 'var(--input-bg)' }}>
+                                    <i className={`fa-solid ${item.icon}`}></i>
+                                </div>
+                                <h4 className="font-semibold text-sm">{item.title}</h4>
+                                <p className="text-xs text-zinc-400 mt-1">{item.desc}</p>
+                            </div>
+                        ))}
                     </div>
+                </Container>
+            </div>
 
-                    <div className="box2 w-full h-27 border border-gray-200 rounded-2xl flex flex-row items-center">
-                        <div className="icon m-4 text-xl text-green-500">
-                            <i className="fas fa-headset"></i>
+            {/* Discounts Block */}
+            <Container>
+                <div className="my-20">
+                    <div className="flex items-center justify-between mb-10 pb-4 border-b" style={{ borderColor: 'var(--card-border)' }}>
+                        <div className="flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                            <h2 className="text-2xl font-bold tracking-tight">Today's Discount</h2>
                         </div>
-                        <div className="textBox">
-                            <p className="font-bold m-1">Support 24/7</p>
-                            <p className="text-sm text-gray-600">24 hours a day, 7 days a week</p>
-                        </div>
-                    </div>
-
-                    <div className="box3 w-full h-27 border border-gray-200 rounded-2xl flex flex-row items-center">
-                        <div className="icon m-4 text-xl text-yellow-500">
-                            <i className="fas fa-credit-card"></i>
-                        </div>
-                        <div className="textBox">
-                            <p className="font-bold m-1">Payment</p>
-                            <p className="text-sm text-gray-600">Pay with Multiple Credit Cards</p>
-                        </div>
-                    </div>
-
-                    <div className="box4 w-full h-27 border border-gray-200 rounded-2xl flex flex-row items-center">
-                        <div className="icon m-4 text-xl text-red-500">
-                            <i className="fas fa-shield-alt"></i>
-                        </div>
-                        <div className="textBox">
-                            <p className="font-bold m-1">Reliable</p>
-                            <p className="text-sm text-gray-600">Trusted by 2000+ major brands</p>
-                        </div>
-                    </div>
-
-                    <div className="box5 w-full h-27 border border-gray-200 rounded-2xl  flex flex-row items-center">
-                        <div className="icon m-4 text-xl text-purple-500">
-                            <i className="fas fa-undo"></i>
-                        </div>
-                        <div className="textBox">
-                            <p className="font-bold m-1">Guarantee</p>
-                            <p className="text-sm text-gray-600">Within 30 days for an exchange</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="DealOfDay mt-10">
-                    <div className="textofDeal p-4 border-b border-gray-200">
-                        <i className="fa-solid fa-fire red-force text-3xl"></i>
-                        <p className="red-force inline text-2xl">
-                            <u> Today's Discount</u>
-                        </p>
+                        <Link to="/products" className="text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-[var(--text)] transition-colors">
+                            Explore All <i className="fa-solid fa-arrow-right ml-1"></i>
+                        </Link>
                     </div>
 
                     {isLoading ? (
-                        <Spinner />
+                        <div className="flex justify-center py-20"><Spinner /></div>
                     ) : (
-                        <div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                             {products.slice(4, 8).map((item) => (
-                                <Product key={item.id} {...item} />
+                                <div key={item.id} className="hover:scale-[1.02] transition-transform duration-300">
+                                    <Product {...item} />
+                                </div>
                             ))}
                         </div>
                     )}
                 </div>
             </Container>
 
-            {/* WithOutContainer */}
-            <div className="FullWidth_add w-full h-auto mt-16 bg-gradient-to-r from-[rgba(15,38,209,1)] to-[rgba(207,31,8,1)]  hidden sm:flex">
-                <div className="tv w-1/2 h-auto">
-                    <div className="img ml-5 mt-10">
-                        <img src={tvPic} className="w-2/3 mb-8 ms-10" alt="tv_picture" />
+            {/* Premium Destiny Console Full Width Banner */}
+            <div className="relative my-24 overflow-hidden py-20 border-y" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
+                <Container>
+                    <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                        <div className="md:col-span-5 flex justify-center order-2 md:order-1">
+                            <img 
+                                src={tvPic} 
+                                className="max-w-xs md:max-w-md w-full object-contain filter drop-shadow-2xl transform hover:translate-y-[-6px] transition-transform duration-500" 
+                                alt="" 
+                            />
+                        </div>
+                        <div className="md:col-span-7 space-y-6 text-center md:text-left order-1 md:order-2">
+                            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-semibold tracking-wider uppercase" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }}>
+                                Collector's Limited Edition
+                            </span>
+                            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+                                GameConsole Destiny <br />
+                                <span className="font-light opacity-50">Special Edition Suite</span>
+                            </h2>
+                            <p className="text-3xl font-bold">$8,000.00</p>
+                            <Link 
+                                to="/products" 
+                                className="inline-flex items-center gap-2 text-xs uppercase tracking-widest font-bold px-8 py-4.5 rounded-xl shadow-lg transition-all"
+                                style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)' }}
+                            >
+                                Shop Console
+                                <i className="fa-solid fa-arrow-right text-[10px]"></i>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-                <div className="tvText w-1/2 h-auto flex flex-col justify-center">
-                    <h2 className="text-white text-6xl font-poppins white-force">
-                        GameConsole Destiny <br /> Special Edition
-                    </h2>
-                    <p className="my-10 yello-force text-4xl">$8.000</p>
-                    <button className="w-40 h-10 p-2 bg-white rounded my-5">Shop Now</button>
-                </div>
+                </Container>
             </div>
 
+            {/* Bottom Highlights & Camera Promo */}
             <Container>
-                <div className="DealOfDay mt-10">
-                    <div className="textofDeal p-4 border-b border-gray-200">
-                        <i className="fa-solid fa-fire red-force text-3xl"></i>
-                        <p className="red-force inline text-2xl"><u> Today's Discount</u></p>
-                    </div>
-
-
-                    {isLoading ? (<Spinner />) : (<div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
-                        {products.slice(0, 8).map((item) => (
-                            <Product key={item.id} {...item} />
-                        ))}
-                    </div>)}
-
-
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 my-24">
+                    {[
+                        { hideOnMobile: false },
+                        { hideOnMobile: true },
+                        { hideOnMobile: true, hideOnDesktop: true }
+                    ].map((card, idx) => (
+                        <div 
+                            key={idx} 
+                            className={`p-8 border rounded-3xl flex items-center justify-between hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300 shadow-sm group ${card.hideOnMobile ? 'hidden sm:flex' : ''} ${card.hideOnDesktop ? 'hidden lg:flex' : ''}`}
+                            style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}
+                        >
+                            <div className="space-y-4">
+                                <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-400">Limited Deal</span>
+                                <h4 className="text-xl font-bold tracking-tight leading-snug">
+                                    SALE 70% <br />
+                                    CATCH THE CAMERA
+                                </h4>
+                                <Link to="/products" className="inline-flex items-center gap-1 text-xs font-bold border-b border-[var(--text)] pb-0.5 hover:opacity-50 transition-all">
+                                    Explore <i className="fa-solid fa-chevron-right text-[8px]"></i>
+                                </Link>
+                            </div>
+                            <img 
+                                className="w-24 h-auto object-contain filter drop-shadow group-hover:scale-105 transition-transform duration-300" 
+                                src={boxpic1} 
+                                alt="" 
+                            />
+                        </div>
+                    ))}
                 </div>
 
-                <div className="prdctBoxes w-full h-80 flex">
-                    <div className="box1 w-full sm:w-1/4 p-5 bg-yellow-200 rounded-lg m-5 border-1 border-gray-400 flex flex-row items-center  ">
-                        <div className="leftSec">
-                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+                {/* Top Weekly Sellers */}
+                <div className="my-24 pb-16">
+                    <div className="flex items-center justify-between mb-10 pb-4 border-b" style={{ borderColor: 'var(--card-border)' }}>
+                        <div className="flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-zinc-400"></span>
+                            <h2 className="text-2xl font-bold tracking-tight">Top Seller This Week</h2>
                         </div>
-                        <div className="tightSec">
-                            <img className="w-30" src={boxpic1} alt="" />
-                        </div>
+                        <Link to="/products" className="text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-[var(--text)] transition-colors">
+                            Explore All <i className="fa-solid fa-arrow-right ml-1"></i>
+                        </Link>
                     </div>
-                    <div className="box2 w-1/2 p-5 bg-red-200 rounded-lg m-5 border-1 border-gray-400  flex-row justify-between items-center hidden sm:flex">
-                        <div className="leftSec">
-                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
+
+                    {isLoading ? (
+                        <div className="flex justify-center py-20"><Spinner /></div>
+                    ) : (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                            {products.slice(2, 6).map((item) => (
+                                <div key={item.id} className="hover:scale-[1.02] transition-transform duration-300">
+                                    <Product {...item} />
+                                </div>
+                            ))}
                         </div>
-                        <div className="tightSec">
-                            <img className="w-30" src={boxpic1} alt="" />
-                        </div></div>
-                    <div className="box3
-                     w-1/4 p-5 bg-green-200 rounded-lg m-5 border-1 border-gray-400  flex-row items-center hidden lg:flex ">
-                        <div className="leftSec">
-                            <p className=" text-2xl font-bold black-force">SALE 70% <br />CATCH BIG DEALS <br />ON THE CAMERAS</p>
-                        </div>
-                        <div className="tightSec">
-                            <img className="w-30" src={boxpic1} alt="" />
-                        </div></div>
+                    )}
                 </div>
-
-                <div className="DealOfDay mt-10 mb-5">
-                    <div className="textofDeal p-4 border-b border-gray-200">
-                        <i className="fa-solid fa-fire red-force text-3xl"></i>
-                        <p className="red-force inline text-2xl">Top Seller This Week</p>
-                    </div>
-                    {isLoading ? (<Spinner />) : (<div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 mb-20">
-                        {products.slice(2, 6).map((item) => (
-                            <Product key={item.id} {...item} />
-                        ))}
-                    </div>)}
-
-                </div>
-
-
             </Container>
-
-
-
-
-
-
-
-
-
-
         </div>
     )
 }
-

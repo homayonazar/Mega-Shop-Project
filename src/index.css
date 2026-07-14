@@ -1,84 +1,55 @@
-
 @import "tailwindcss";
 @import '@fortawesome/fontawesome-free/css/all.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+/* فعال‌سازی کلاس‌محور برای Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+    --bg: #ffffff;
+    --text: #09090b;
+    --card-bg: #ffffff;
+    --card-border: #f4f4f5;
+    --input-bg: #f4f4f5;
+    --btn-primary-bg: #09090b;
+    --btn-primary-text: #ffffff;
+    --btn-secondary-bg: #f4f4f5;
+    --btn-secondary-text: #09090b;
+    --navbar-bg: #f4f4f5;
+}
+
+.dark {
+    --bg: #09090b;
+    --text: #f4f4f5;
+    --card-bg: #18181b;
+    --card-border: #27272a;
+    --input-bg: #09090b;
+    --btn-primary-bg: #f4f4f5;
+    --btn-primary-text: #09090b;
+    --btn-secondary-bg: #27272a;
+    --btn-secondary-text: #f4f4f5;
+    --navbar-bg: #18181b;
+}
 
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg);
-  
+    color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
   box-sizing: border-box;
-  /* transition: background-color 0.3s ease,color 0.3s ease,border-color 0.3s ease; */
 }
 
-:root {
-    --bg: #ffffff;
-    --text: #000000;
-    --myGreen: #d8efee;
-    --myBlue: #d9ebf6;
-    --table: #e8e8e8 ;
-    --comment : #f2f2f2 ;
-    --navbar: #ebebeb ;
-    --myFONT-w: #ffffff;
-    --myFONT-B: #2e2e2e;
-    --myFontColor: #2aaac6;
-    --myWhite: #eff1f4;
-    --myBG: linear-gradient(90deg,
-        rgba(255, 255, 255, 1) 0%,
-        rgb(235, 235, 235) 50%,
-        rgba(255, 255, 255, 1) 100%);
-    --textColor: #455aff;
-    --dashboard-bg : #f5f5f5;
-    --dashboard-font: ;
-    --dashboard-hover: #98aead;
-    
+/* حل تداخل رنگ متن‌ها */
+p, span, li, i, h1, h2, h3, h4, select, input, label {
+    color: inherit;
 }
 
-.dark {
-    --bg: #1e1f20;
-    --text: #e1e1e1;
-    --myGreen: #1d2b2a;
-    --myBlue: #3e5666;
-    --navbar: #414a4b ;
-    --table: #424b4c ;
-    --comment : #1d2b2a ;
-    --myFontColor: #90e0ef;
-    --myWhite: #0f2027;
-    --myFONT-w: #0f2027;
-    --myFONT-B: #ffffff;
-    --myBG: linear-gradient(90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(67, 76, 77, 1) 50%, 
-    rgba(32, 36, 37, 1) 100%,
-    rgba(32, 36, 37, 1) 100%);
-    --textColor: #ffffff;
-}
-
-p ,span , li , i ,h3,label,h2 {
-    color: var(--text);
-} 
-
-
-
-.white-force {
-  color: white !important;
-}
-.yello-force {
-  color: rgb(255, 231, 78) !important;
-}
-.red-force {
-  color: rgb(255, 59, 59) !important;
-}
-.black-force {
-  color: rgb(0, 0, 0) !important;
-}
-.blue-force {
-  color: rgb(138, 112, 255) !important;
-}
-.black-force {
-  color: rgb(0, 0, 0) !important;
-}
+/* کلاس‌های رنگی کمکی ثابت */
+.white-force { color: #ffffff !important; }
+.yello-force { color: #fde047 !important; }
+.red-force { color: #f43f5e !important; }
+.black-force { color: #000000 !important; }
+.blue-force { color: #6366f1 !important; }

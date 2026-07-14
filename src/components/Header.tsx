@@ -9,10 +9,9 @@ import { useShppingCartContext } from "./contexts/ShppingCartContext";
 import cartImg from "../assets/images/shopping-cart.png"
 
 function Header() {
-    const { cartItem, handleIncreaseProductQty, handleDecreaseProductQty, handleRemoveProduct } = useShppingCartContext();
+    const { cartItem, handleIncreaseProductQty, handleDecreaseProductQty, handleRemoveProduct, cartQty } = useShppingCartContext();
     const [products, setProducts] = useState<IProduct[]>([]);
 
-    //when recive cartitem content from API it'll be change
     useEffect(() => {
         async function fetchProducts() {
             const data = await Promise.all(cartItem.map(item => getProduct(item.id)));
@@ -21,11 +20,10 @@ function Header() {
         if (cartItem.length > 0) {
             fetchProducts();
         } else {
-            setProducts([]); // if cart empty
+            setProducts([]);
         }
     }, [cartItem]);
 
-    // ----- Dark Mode -----
     const [darkMode, setDarkMode] = useState(() => {
         const saved = localStorage.getItem("theme");
         return saved ? saved === "dark" : false;
@@ -42,233 +40,269 @@ function Header() {
         }
     }, [darkMode]);
 
-    const { cartQty } = useShppingCartContext();
-
-
     const toggleDarkMode = () => setDarkMode(v => !v);
-    // UseStates ...
+    
     const [isOpen, setIsOpen] = useState(false);
     const [isOpen2, setIsOpen2] = useState(false);
-    const [isOpenSign, setIsOpenSign] = useState(false)
+    const [isOpenSign, setIsOpenSign] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
 
-
     return (
-        <div className="shadow bg-[var(--bg)]">
-            {/* ----- Header Top section ----- */}
-            <div className="upper_section py-2 hidden sm:block">
-                <div className="Upper_section_of_header w-full h-7 flex justify-between border-b-1 border-gray-200">
-                    <div className="Left_side ms-3">
-                        <i className="fas fa-light fa-phone"></i>
-                        <span className="text-gray-700 m-1 py-10"> Call us : +90 (531) 123 4567</span>
-                    </div>
-                    <div className="flex items-center gap-6 text-gray-600">
-                        <button
-                            className="Day|Night_button cursor-pointer"
-                            type="button"
-                            onClick={toggleDarkMode}
-                            title={darkMode ? "Switch to light" : "Switch to dark"}
-                        >
-                            {darkMode ? (
-                                <p> <i className="far fa-regular fa-sun me-1"></i>Day</p>
-                            ) : (
-                                <p> <i className="far fa-light fa-moon me-1"></i>Night</p>
-                            )}
-                        </button>
-
-                        <button className="flex items-center gap-2 cursor-pointer">
-                            <i className="fas fa-light fa-language "></i>
-                            <span>Language:</span>
-                            <span className="font-semibold">English</span>
-                        </button>
-
-                        <div className="Sign-in">
-                            {/* Button sign-in*/}
-                            <button className="flex items-center gap-2 text-gray-700 cursor-pointer" onClick={() => setIsOpenSign(true)}>
-                                <i className="far fa-user text-lg"></i>
-                                <span className="font-medium me-3">Sign-in</span>
+        <div className="border-b transition-colors duration-300" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
+            
+            {/* Top Bar */}
+            <div className="hidden sm:block border-b py-3.5 text-sm text-zinc-500 transition-colors" style={{ borderColor: 'var(--card-border)' }}>
+                <Container>
+                    <div className="flex justify-between items-center">
+                        <div className="flex items-center gap-3">
+                            <i className="fa-solid fa-phone text-base"></i>
+                            <span>Call us: <span className="font-bold text-zinc-950 dark:text-zinc-200">+90 (531) 123 4567</span></span>
+                        </div>
+                        <div className="flex items-center gap-8">
+                            <button
+                                className="flex items-center gap-2.5 cursor-pointer hover:opacity-80 transition-opacity font-medium"
+                                onClick={toggleDarkMode}
+                            >
+                                {darkMode ? (
+                                    <>
+                                        <i className="fa-regular fa-sun text-amber-500 text-base"></i>
+                                        <span>Light Mode</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <i className="fa-regular fa-moon text-base"></i>
+                                        <span>Dark Mode</span>
+                                    </>
+                                )}
                             </button>
 
-                            {/* bg Modal blur */}
-                            {isOpenSign && (
-                                <div className="fixed inset-0 bg-black/40 backdrop-blur-xs z-80" onClick={() => setIsOpenSign(false)}>
+                            <button className="flex items-center gap-2 hover:opacity-80 transition-opacity font-medium">
+                                <i className="fa-solid fa-globe text-base"></i>
+                                <span>English</span>
+                            </button>
 
-                                </div>
-                            )}
-                            {/* Modal */}
-                            {isOpenSign && (
-                                <div className="openSignModal fixed bg-[var(--myBlue)] border-1 border-gray-500 p-4 w-[450px] h-[350px] top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[100] flex items-center justify-center text-white text-xl font-bold rounded-2xl">
-                                    <div className="fixed top-2 left-5 text-3xl rotate-45"
-                                        onClick={() => setIsOpenSign(false)}>
-                                        <div className="bg-red-500 w-7 h-8 rotate-45 rounded flex justify-center items-center cursor-pointer">
-                                            +
-                                        </div>
-                                    </div>
-                                    <div className="RegisterForm flex flex-col items-center">
-                                        {!isSignUp ? (
-                                            <>
-                                                {/* --- Login FORM --- */}
-                                                <label> Username :
-                                                    <input type="text" placeholder="Enter Your Username" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
-                                                </label>
-
-                                                <label className="mt-5"> Password :
-                                                    <input type="password" placeholder="Enter Your Password" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
-                                                </label>
-                                                <button className="mt-7 rounded bg-blue-500 text-white w-1/3 cursor-pointer">Login</button>
-                                                <p className="mt-10 border-t-1 border-gray-400 pt-2"> If you don’t have Account,{" "}
-                                                    <span className="blue-force cursor-pointer" onClick={() => setIsSignUp(true)}>
-                                                        Sign-up
-                                                    </span>
-                                                </p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                {/* --- Sign-up FORM --- */}
-                                                <label> Full Name :
-                                                    <input type="text" placeholder="Enter Your Full Name" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
-                                                </label>
-                                                <label className="mt-5"> Email :
-                                                    <input type="email" placeholder="Enter Your Email" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
-                                                </label>
-                                                <label className="mt-5"> National ID :
-                                                    <input type="text" placeholder="Enter Your National ID" className="w-[200px] h-8 bg-amber-50 rounded-sm ms-5 outline-0 text-gray-400 text-lg ps-2" />
-                                                </label>
-                                                <button className="mt-7 rounded bg-green-500 text-white w-1/3 cursor-pointer"> Register </button>
-                                                <p className="mt-10 border-t-1 border-gray-400 pt-2">  Already have an Account?{" "}
-                                                    <span className="blue-force cursor-pointer" onClick={() => setIsSignUp(false)}>Login</span>
-                                                </p>
-                                            </>
-                                        )}
-                                    </div>
-                                </div>
-                            )}
+                            <button 
+                                className="flex items-center gap-2.5 font-bold hover:opacity-80 transition-opacity"
+                                onClick={() => setIsOpenSign(true)}
+                            >
+                                <i className="fa-regular fa-user text-base"></i>
+                                <span>Sign In</span>
+                            </button>
                         </div>
                     </div>
-                </div>
+                </Container>
             </div>
 
-            {/* ----- mobile menu ----- */}
-            <div
-                onClick={() => setIsOpen(!isOpen)}
-                className="hamburgerMenu fixed top-3 right-5 w-12 h-12 bg-[var(--text)] items-center justify-center cursor-pointer z-50 sm:hidden"
-            >
-                <i className="fa-solid fa-bars text-3xl white-force "></i>
-            </div>
-            <div
-                className={`fixed top-0 right-0 w-70 h-full bg-[var(--bg)] transition-transform duration-500 z-40 sm:hidden
-                 ${isOpen ? "translate-x-0" : "translate-x-full"}`} >
-                <div className="middleSection flex flex-col items-center">
-                    <div className="HelloLogo w-40 h-20 bg-amber-300 mt-10">
-                        <p className="text-center">Logo will disappear here</p>
-                    </div>
-                    <ul className="flex flex-col gap-4 py-3 mt-10">
-                        <li>
-                            <Link to="/"><i className="far fa-light fa-house me-1"></i> Home</Link>
-                        </li>
-                        <li><Link to="/Products">Products</Link></li>
-                        <li><Link to="/aboutus">About Us</Link></li>
-                        <li><Link to="/contact">Contact Us</Link></li>
-                    </ul>
-                </div>
-            </div>
-
-            {/* ----- cart sideBar ----- */}
-
-            <div className="cartFixedButton fixed bottom-20 left-10 z-70 ">
-                <div className="bgCart rounded-full bg-green-200 border-1 border-gray-300 p-4 cursor-pointer " onClick={() => setIsOpen2(!isOpen2)}>
-                    <img src={cartImg} className="w-10" alt="" />
-                    {cartQty !== 0 && (
-                        <span className="absolute top-0 -right-2 w-7 h-7 text-lsm font-bold bg-red-500 white-force flex justify-center items-center rounded-full">
-                            {cartQty}
-                        </span>
-                    )}
-                </div>
-            </div>
-            <div
-                className={`cartSideMenu fixed bg-[var(--myBlue)] border border-gray-200 top-0 right-0 w-[400px] h-full z-[60] transform transition-transform duration-500 ease-in-out shadow-2xl rounded-l-2xl overflow-y-auto ${isOpen2 ? "translate-x-0" : "translate-x-full"
-                    }`}
-            >
-                <div className="text-center sticky top-0 bg-[var(--myBlue)] p-6 border-b border-gray-200">
-                    <p className="text-3xl font-bold text-[var(--text)] tracking-tight">Your Cart</p>
-                </div>
-                <div className="flex flex-col p-6 gap-4">
-                    {cartItem.map((item, index) => {
-                        const product = products[index];
-                        return (
-                            <div key={item.id} className="flex justify-between flex-col  items-start bg-[var(--myWhite)] p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                                <div className="flex items-center gap-4"> {product && (
-                                    <img
-                                        className="h-16 w-16 object-cover rounded-lg border border-gray-200"
-                                        src={product.imageUrl}
-                                        alt={product.title} />
-                                )}
-                                    <div className="flex flex-col">
-                                        <h2 className="font-semibold text-[var(--text)] text-lg truncate max-w-[200px]">{product?.title}</h2>
-                                        <span className="text-green-600 font-medium">
-                                            <span className="text-[var(--text)]">Price: </span>${product?.price.toFixed(2)}</span>
-                                    </div>
-                                </div>
-                                <div className="flex items-center flex-row-reverse gap-2 ml-auto">
-
-                                    <button
-                                        onClick={() => handleDecreaseProductQty(item.id)}
-                                        className="px-3 py-1 bg-[var(--navbar)] text-[var(--text)] rounded-full hover:bg-gray-300 transition-colors duration-200 "
-                                    >
-                                        -
-                                    </button>
-                                    <span className="text-lg font-medium text-[var(--bg)]">{item.qty}</span>
-                                    <button
-                                        onClick={() => handleIncreaseProductQty(item.id)}
-                                        className="px-3 py-1 bg-[var(--navbar)] text-[var(--text)] rounded-full hover:bg-gray-300 transition-colors duration-200"
-                                    >
-                                        +
-                                    </button>
-                                    <button onClick={() => handleRemoveProduct(item.id)} className="px-3 py-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors duration-200 text-sm font-medium"
-                                    >
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
-                        );
-                    })}
-                    <div className=" fixed bottom-10 left-1/2 transform -translate-x-1/2">
-                        <Link to="/cart"><button className="p-4 rounded-2xl text-[var(--bg)] bg-[var(--textColor)] text-xl font-bold cursor-pointer" onClick={() => {setIsOpen2(!isOpen2)}}>Go to CART</button></Link>
-                    </div>
-                </div>
-            </div>
-
-            {/* ----- Logo , search , cart ----- */}
+            {/* Middle Section */}
             <Container>
-                <div className="Header_section w-full h-auto flex justify-between items-center">
-                    <div className="Logo_of_Site w-50 py-2 ">
-                        <img src={Logo} alt="logo picture" />
-                    </div>
-                    <div className="Search_box w-full max-w-lg mx-auto border rounded-full overflow-hidden border-[var(--text)] hidden sm:flex">
-                        <button className="px-4 py-2 bg-white flex items-center gap-1">All categories ▼</button>
+                <div className="py-8 flex justify-between items-center gap-12">
+                    <Link to="/" className="flex-shrink-0">
+                        <img src={Logo} alt="Mega Shop" className="h-12 w-auto object-contain dark:brightness-125" />
+                    </Link>
+
+                    {/* Search Bar */}
+                    <div className="hidden md:flex flex-1 max-w-2xl items-center border rounded-2xl overflow-hidden p-1.5 shadow-sm" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }}>
+                        <select className="bg-transparent text-sm px-5 py-2.5 outline-none font-bold border-r" style={{ borderColor: 'var(--card-border)' }}>
+                            <option className="bg-[var(--card-bg)] text-[var(--text)]">All categories</option>
+                        </select>
                         <input
                             type="text"
-                            placeholder="Search for products"
-                            className="flex-1 px-5 py-3 outline-none white-force]"
+                            placeholder="Search for products, brands..."
+                            className="flex-1 bg-transparent px-5 py-3 text-base outline-none text-[var(--text)]"
                         />
-                        <button className="px-4 py-2 bg-gray-600 text-white">
-                            <i className="fas fa-light fa-magnifying-glass white-force"></i>
+                        <button className="px-5 py-2.5 transition-colors cursor-pointer hover:text-indigo-400">
+                            <i className="fa-solid fa-magnifying-glass text-base"></i>
                         </button>
                     </div>
-                    <div className="Calling hidden lg:block">
-                        <div className="up mb-2">
-                            <i className="fas fa-light fa-phone"></i>
-                            <span className="text-gray-500 m-1"> Call us : +90 (531) 123 4567</span>
-                        </div>
-                        <div className="down">
-                            <i className="fas fa-light fa-envelope"></i>
-                            <span className="text-gray-500 m-1"> Our E-mail : contact@homayonazar.com</span>
+
+                    <div className="hidden lg:flex items-center gap-4 text-right">
+                        <div className="flex flex-col">
+                            <span className="text-xs text-zinc-400 uppercase tracking-wider font-semibold">Support 24/7</span>
+                            <span className="font-extrabold text-base mt-1">+90 (531) 123 4567</span>
                         </div>
                     </div>
                 </div>
             </Container>
 
             <Navbar />
+
+            {/* Sign-In / Sign-Up Modal */}
+            {isOpenSign && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+                    <div className="fixed inset-0 bg-black/50 backdrop-blur-md" onClick={() => setIsOpenSign(false)} />
+                    
+                    <div className="relative border w-full max-w-lg rounded-[32px] p-10 shadow-2xl z-10" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
+                        
+                        <button 
+                            onClick={() => setIsOpenSign(false)}
+                            className="absolute top-6 right-6 w-10 h-10 rounded-full text-zinc-500 hover:text-black dark:hover:text-white flex items-center justify-center transition-colors"
+                            style={{ backgroundColor: 'var(--input-bg)' }}
+                        >
+                            <i className="fa-solid fa-xmark text-lg"></i>
+                        </button>
+
+                        <div className="text-center mb-10">
+                            <h3 className="text-3xl font-black">
+                                {!isSignUp ? "Welcome Back" : "Create Account"}
+                            </h3>
+                            <p className="text-sm text-zinc-400 mt-2">
+                                {!isSignUp ? "Please sign in to your account" : "Join us to enjoy premium features"}
+                            </p>
+                        </div>
+
+                        <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+                            {!isSignUp ? (
+                                <>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-wider text-zinc-500">Username</label>
+                                        <input type="text" placeholder="Username" className="w-full px-5 py-4 rounded-2xl border text-base outline-none focus:border-zinc-500 transition-colors" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-wider text-zinc-500">Password</label>
+                                        <input type="password" placeholder="••••••••" className="w-full px-5 py-4 rounded-2xl border text-base outline-none focus:border-zinc-500 transition-colors" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }} />
+                                    </div>
+                                    <button className="w-full font-extrabold text-base py-4 rounded-2xl hover:opacity-90 transition-opacity mt-8 shadow-lg" style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)' }}>
+                                        Login
+                                    </button>
+                                    <p className="text-center text-sm text-zinc-500 mt-8 pt-6 border-t" style={{ borderColor: 'var(--card-border)' }}>
+                                        Don't have an account?{" "}
+                                        <button type="button" className="font-bold underline text-[var(--text)]" onClick={() => setIsSignUp(true)}>
+                                            Sign Up
+                                        </button>
+                                    </p>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-wider text-zinc-500">Full Name</label>
+                                        <input type="text" placeholder="John Doe" className="w-full px-5 py-4 rounded-2xl border text-base outline-none focus:border-zinc-500 transition-colors" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-wider text-zinc-500">Email Address</label>
+                                        <input type="email" placeholder="john@example.com" className="w-full px-5 py-4 rounded-2xl border text-base outline-none focus:border-zinc-500 transition-colors" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }} />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-bold uppercase tracking-wider text-zinc-500">National ID</label>
+                                        <input type="text" placeholder="123456789" className="w-full px-5 py-4 rounded-2xl border text-base outline-none focus:border-zinc-500 transition-colors" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }} />
+                                    </div>
+                                    <button className="w-full font-extrabold text-base py-4 rounded-2xl hover:opacity-95 transition-opacity mt-8 shadow-lg" style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)' }}>
+                                        Register Account
+                                    </button>
+                                    <p className="text-center text-sm text-zinc-500 mt-8 pt-6 border-t" style={{ borderColor: 'var(--card-border)' }}>
+                                        Already have an account?{" "}
+                                        <button type="button" className="font-bold underline text-[var(--text)]" onClick={() => setIsSignUp(false)}>
+                                            Login
+                                        </button>
+                                    </p>
+                                </>
+                            )}
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Mobile Navigation Trigger */}
+            <div
+                onClick={() => setIsOpen(!isOpen)}
+                className="fixed top-5 right-5 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer z-50 sm:hidden shadow-xl"
+                style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)' }}
+            >
+                <i className={`fa-solid ${isOpen ? "fa-xmark" : "fa-bars"} text-xl`}></i>
+            </div>
+            
+            <div className={`fixed inset-0 bg-black/30 backdrop-blur-xs z-40 sm:hidden transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} onClick={() => setIsOpen(false)} />
+            
+            <div className="fixed top-0 right-0 w-80 h-full border-l transition-transform duration-300 z-40 sm:hidden p-10 flex flex-col justify-between"
+                 style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)', transform: isOpen ? "translateX(0)" : "translateX(100%)" }}>
+                <div className="space-y-12 mt-16">
+                    <img src={Logo} alt="Logo" className="h-10 w-auto dark:brightness-125" />
+                    <nav className="flex flex-col gap-6 text-xl font-bold">
+                        <Link to="/" onClick={() => setIsOpen(false)} className="hover:opacity-80">Home</Link>
+                        <Link to="/Products" onClick={() => setIsOpen(false)} className="hover:opacity-80">Products</Link>
+                        <Link to="/aboutus" onClick={() => setIsOpen(false)} className="hover:opacity-80">About Us</Link>
+                        <Link to="/callus" onClick={() => setIsOpen(false)} className="hover:opacity-80">Contact Us</Link>
+                    </nav>
+                </div>
+            </div>
+
+            {/* Floating Cart Trigger */}
+            <div className="fixed bottom-8 left-8 z-50">
+                <button 
+                    onClick={() => setIsOpen2(!isOpen2)}
+                    className="relative w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/30 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                >
+                    <img src={cartImg} className="w-7 h-7 brightness-0 invert" alt="Cart" />
+                    {cartQty !== 0 && (
+                        <span className="absolute -top-2 -right-2 w-7 h-7 text-xs font-black bg-zinc-950 text-white flex justify-center items-center rounded-full border-2 border-white dark:border-zinc-950">
+                            {cartQty}
+                        </span>
+                    )}
+                </button>
+            </div>
+
+            {/* Drawer Backdrop */}
+            {isOpen2 && (
+                <div className="fixed inset-0 z-50 bg-black/20 backdrop-blur-xs" onClick={() => setIsOpen2(false)} />
+            )}
+
+            {/* Cart Side Drawer */}
+            <div
+                className="fixed top-0 right-0 w-full sm:w-[460px] h-full border-l z-[60] transform transition-transform duration-500 ease-in-out shadow-2xl flex flex-col justify-between"
+                style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)', transform: isOpen2 ? "translateX(0)" : "translateX(100%)" }}
+            >
+                <div className="p-8 border-b flex justify-between items-center" style={{ borderColor: 'var(--card-border)' }}>
+                    <p className="text-2xl font-black">Your Cart</p>
+                    <button onClick={() => setIsOpen2(false)} className="text-zinc-400 hover:text-zinc-600">
+                        <i className="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <div className="flex-1 overflow-y-auto p-8 space-y-6">
+                    {cartItem.length === 0 ? (
+                        <div className="text-center py-20 text-zinc-400 text-base font-medium">
+                            Your cart is empty.
+                        </div>
+                    ) : (
+                        cartItem.map((item, index) => {
+                            const product = products[index];
+                            return (
+                                <div key={item.id} className="flex gap-5 p-5 rounded-3xl border" style={{ backgroundColor: 'var(--input-bg)', borderColor: 'var(--card-border)' }}>
+                                    {product && (
+                                        <img
+                                            className="h-20 w-20 object-cover rounded-2xl border flex-shrink-0"
+                                            style={{ borderColor: 'var(--card-border)' }}
+                                            src={product.imageUrl}
+                                            alt={product.title}
+                                        />
+                                    )}
+                                    <div className="flex-1 min-w-0 flex flex-col justify-between">
+                                        <div>
+                                            <h4 className="font-bold text-base truncate">{product?.title}</h4>
+                                            <p className="text-sm font-semibold text-zinc-400 mt-1">${product?.price.toFixed(2)}</p>
+                                        </div>
+                                        <div className="flex justify-between items-center mt-4">
+                                            <div className="flex items-center rounded-xl p-1 bg-zinc-200/50 dark:bg-zinc-800">
+                                                <button onClick={() => handleDecreaseProductQty(item.id)} className="w-8 h-8 flex items-center justify-center text-sm font-bold">-</button>
+                                                <span className="px-3 text-sm font-bold">{item.qty}</span>
+                                                <button onClick={() => handleIncreaseProductQty(item.id)} className="w-8 h-8 flex items-center justify-center text-sm font-bold">+</button>
+                                            </div>
+                                            <button onClick={() => handleRemoveProduct(item.id)} className="text-sm font-bold text-rose-500 hover:text-rose-600">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })
+                    )}
+                </div>
+
+                <div className="p-8 border-t" style={{ borderColor: 'var(--card-border)' }}>
+                    <Link to="/cart" onClick={() => setIsOpen2(false)}>
+                        <button className="w-full text-base uppercase tracking-wider font-extrabold py-5 rounded-2xl hover:opacity-90 transition-opacity" style={{ backgroundColor: 'var(--btn-primary-bg)', color: 'var(--btn-primary-text)' }}>
+                            Go to Checkout
+                        </button>
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 }

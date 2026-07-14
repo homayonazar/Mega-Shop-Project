@@ -1,133 +1,91 @@
-import { useEffect, useState } from "react"
-import Product from "../components/Product"
-import type { IProduct } from "../components/types/Server"
+import { useEffect, useState } from "react";
+import Product from "../components/Product";
+import type { IProduct } from "../components/types/Server";
 import { getProducts } from "../components/Services/Api";
 import Container from "../components/Container";
 import Spinner from "../components/Spinner";
 
 function Products() {
-
-    // maping pdcts
     const [products, setProducts] = useState<IProduct[]>([]);
     const [sortOption, setSortOption] = useState<string>("");
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
-        setTimeout(() => {
-            getProducts()
-                .then((result) => setProducts(result.products))
-                .finally(() => setIsLoading(false));
-        });
+        getProducts()
+            .then((result) => setProducts(result.products))
+            .finally(() => setIsLoading(false));
     }, []);
 
-    // Sorting Func
     const sortedProducts = [...products].sort((a, b) => {
-        if (sortOption === "highPrice") {
-            return b.price - a.price;
-        }
-        if (sortOption === "lowPrice") {
-            return a.price - b.price;
-        }
+        if (sortOption === "highPrice") return b.price - a.price;
+        if (sortOption === "lowPrice") return a.price - b.price;
         return 0;
     });
 
     return (
-        <div>
+        <div className="min-h-screen py-8 transition-colors duration-300">
             <Container>
-                <div className="pdctSec flex flex-row ">
-                    <div className="filterSec w-[250px]  h-auto hidden sm:block mt-5 border p-2 rounded-2xl border-gray-300 mb-10 ">
-                        <div className="Sorting fff w-full flex flex-col border p-3 rounded-2xl border-gray-300">
-                            <h2 className="text-center font-bold text-lg mt-2 border-b-1 border-b-gray-300 mb-2">Sorting</h2>
-
-                            <label className="flex gap-2 ">
-                                <input type="radio" name="sorting" value="highPrice" onChange={(e) => setSortOption(e.target.value)} />
-                                High Price
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="radio" name="sorting" value="lowPrice" onChange={(e) => setSortOption(e.target.value)} />
-                                Low Price
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="radio" name="sorting" value="popular" />
-                                Popular products
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="radio" name="sorting" value="visited" />
-                                Most Visited
-                            </label>
+                <div className="flex flex-col lg:flex-row gap-12">
+                    
+                    {/* Filters Sidebar */}
+                    <div className="w-full lg:w-64 flex-shrink-0 space-y-8">
+                        <div>
+                            <h3 className="text-xs uppercase tracking-widest text-zinc-400 font-bold mb-4">Sort By</h3>
+                            <div className="space-y-3 text-sm text-zinc-500">
+                                {[
+                                    { value: "highPrice", label: "Price: High to Low" },
+                                    { value: "lowPrice", label: "Price: Low to High" },
+                                    { value: "popular", label: "Popularity" },
+                                    { value: "visited", label: "Most Visited" }
+                                ].map((opt) => (
+                                    <label key={opt.value} className="flex items-center gap-3 cursor-pointer hover:text-[var(--text)]">
+                                        <input 
+                                            type="radio" 
+                                            name="sorting" 
+                                            value={opt.value} 
+                                            onChange={(e) => setSortOption(e.target.value)} 
+                                            className="w-4 h-4 accent-zinc-800"
+                                        />
+                                        <span>{opt.label}</span>
+                                    </label>
+                                ))}
+                            </div>
                         </div>
-                        <div className="colorCheck fff w-full flex flex-col border mt-5 p-3 rounded-2xl border-gray-300">
-                            <h2 className="text-center font-bold text-lg mt-2 border-b-1 border-b-gray-300 mb-2">Color Filter</h2>
 
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="highPrice" />
-                                White
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="lowPrice" />
-                                Black
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="popular" />
-                                Purple
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="visited" />
-                                Gary
-                            </label>
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="visited" />
-                                Blue
-                            </label>
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="visited" />
-                                Red
-                            </label>
-                        </div>
-                        <div className="colorCheck fff w-full flex flex-col border mt-5 p-3 rounded-2xl border-gray-300">
-                            <h2 className="text-center font-bold text-lg mt-2 border-b-1 border-b-gray-300 mb-2">AnyThing else</h2>
-
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="highPrice" />
-                                Choice-1
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="lowPrice" />
-                                Choice-2
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="popular" />
-                                Choice-3
-                            </label>
-
-                            <label className="flex gap-2">
-                                <input type="checkbox" name="sorting" value="visited" />
-                                Choice-4
-                            </label>
+                        <div className="border-t pt-6" style={{ borderColor: 'var(--card-border)' }}>
+                            <h3 className="text-xs uppercase tracking-widest text-zinc-400 font-bold mb-4">Colors</h3>
+                            <div className="space-y-3 text-sm text-zinc-500">
+                                {["White", "Black", "Purple", "Grey", "Blue", "Red"].map((color) => (
+                                    <label key={color} className="flex items-center gap-3 cursor-pointer hover:text-[var(--text)]">
+                                        <input type="checkbox" className="w-4 h-4 accent-zinc-800 rounded" />
+                                        <span>{color}</span>
+                                    </label>
+                                ))}
+                            </div>
                         </div>
                     </div>
-                    <div className="productSec w-full ">
-                        {isLoading ? (<Spinner />) : (<div className="products_box w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4">
-                            {sortedProducts.map((item) => (
-                                <Product key={item.id} {...item} />
-                            ))}
-                        </div>
-                        )}
 
+                    {/* Products Grid */}
+                    <div className="flex-1">
+                        <div className="flex justify-between items-center mb-8">
+                            <p className="text-xs text-zinc-400 uppercase tracking-widest font-mono">Showing {sortedProducts.length} Products</p>
+                        </div>
+
+                        {isLoading ? (
+                            <div className="flex justify-center py-20"><Spinner /></div>
+                        ) : (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                                {sortedProducts.map((item) => (
+                                    <Product key={item.id} {...item} />
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             </Container>
         </div>
-    )
+    );
 }
 
-export default Products
+export default Products;

@@ -9,7 +9,6 @@ import AboutUs from './pages/AboutUs';
 import CallUs from './pages/CallUs';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
-import Admin from './pages/Admin';
 
 
 export default function App() {
@@ -26,7 +25,6 @@ export default function App() {
                         <Route path="/aboutus" element={<AboutUs />} />
                         <Route path="/callus" element={<CallUs />} />
                         <Route path="*" element={<NotFound />} />
-                        <Route path="/admin" element={<Admin />} />
                     </Routes>
                 </Layout>
             </ShoppingCartProvider>
